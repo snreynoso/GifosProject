@@ -1,0 +1,110 @@
+body {
+  width: 90rem;
+  padding: 0;
+  margin: auto;
+
+  // ---------------------------------- HEADER ---------------------------------- //
+  header {
+    //background: rgba(0, 4, 255, 0.281);
+    padding: 0 9.75rem;
+    height: 5.63rem;
+    border-top: 0.31rem solid #572ee5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    #logo {
+      img {
+        width: 4.25rem;
+        height: 3.75rem;
+      }
+    }
+
+    #menu_nav {
+      @include Menu_NAV;
+      position: relative;
+      left: 16.84rem;
+      width: 23.35rem;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #crear_gif {
+      width: 3.38rem;
+      height: 3.38rem;
+      border: 0.06rem solid #572ee5;
+      border-radius: 1.69rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  // ----------------------------- SECTION SEARCH ------------------------------- //
+  #sec_search {
+    height: 45.56rem;
+    padding-top: 4.75rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #titulo {
+      width: 35rem;//50rem;
+      height: 6.25rem;
+
+      @include Titulo;
+      text-align: center;
+
+      h1 {
+        margin: 0;
+        span {
+          color: #50e3c2;
+        }
+      }
+    }
+
+    #search_block {
+        position: relative;
+        top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+      #img_search {
+        img {
+          display: block;
+          width: 25rem;
+          height: 11.88rem;
+        }
+      }
+
+      #search {
+        width: 34.44rem;
+        height: 3.13rem;
+        border: 0.06rem solid #572ee5;
+        border-radius: 1.69rem;
+
+        display: flex;
+        align-items: center;
+
+        input {
+          border: 0;
+          width: 28rem;
+          height: 1.38rem;
+          position: relative;
+          left: 3.38rem;
+
+          @include Search;
+        }
+
+        a > img {
+          position: relative;
+          left: 3.5rem;
+        }
+      }
+    }
+  }
+}
