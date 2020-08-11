@@ -1,0 +1,31 @@
+$font_Montserrat: "Montserrat", sans-serif;
+$font_Roboto: "Roboto", sans-serif;
+
+$font_weight_regular: 400;
+$font_weight_medium: 500;
+$font_weight_bold: 700;
+
+$color_violet: #572ee5;
+$color_black: #000000;
+$color_grey: #9cafc3;
+$color_white: #ffffff;
+$color_lightGreen: #5ed7c6;
+$color_backGrey: #F3F5F8;
+
+@mixin Roboto_Gray {
+  font-family: $font_Roboto;
+  color: $color_grey;
+  letter-spacing: 0;
+}
+
+@mixin Montserrat_Violet {
+  font-family: $font_Montserrat;
+  color: $color_violet;
+  letter-spacing: 0;
+}
+
+@mixin Roboto_Black {
+  font-family: $font_Roboto;
+  color: $color_black;
+  letter-spacing: 0;
+}

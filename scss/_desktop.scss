@@ -5,10 +5,9 @@ body {
 
   // ---------------------------------- HEADER ---------------------------------- //
   header {
-    //background: rgba(0, 4, 255, 0.281);
     padding: 0 9.75rem;
     height: 5.63rem;
-    border-top: 0.31rem solid #572ee5;
+    border-top: 0.31rem solid $color_violet;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,58 +19,103 @@ body {
       }
     }
 
-    #menu_nav {
-      @include Menu_NAV;
+    #nav_menu {
+      @include Montserrat_Violet;
+      font-size: 0.81rem;
+      font-weight: $font_weight_bold;
+      line-height: 1rem;
+
       position: relative;
       left: 16.84rem;
       width: 23.35rem;
 
       display: flex;
       justify-content: space-between;
+
+      a {
+        cursor: pointer;
+        text-decoration: none;
+        border-bottom: 0.13rem solid transparent;
+      }
+
+      a:hover {
+        border-bottom: 0.13rem solid $color_lightGreen;
+      }
+
+      a:active {
+        color: $color_grey;
+        border-bottom: 0.13rem solid transparent;
+      }
     }
 
     #crear_gif {
       width: 3.38rem;
       height: 3.38rem;
-      border: 0.06rem solid #572ee5;
-      border-radius: 1.69rem;
+      border: 0.06rem solid $color_violet;
+      border-radius: 1.9rem;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      cursor: pointer;
+
+      a > h1 {
+        margin: 0;
+        color: $color_violet;
+      }
+    }
+
+    #crear_gif:hover {
+      background: $color_violet;
+      a > h1 {
+        color: $color_white;
+      }
+    }
+
+    #crear_gif:active {
+      border-color: $color_grey;
+      background: $color_grey;
+      a > h1 {
+        color: $color_white;
+      }
     }
   }
 
   // ----------------------------- SECTION SEARCH ------------------------------- //
   #sec_search {
-    height: 45.56rem;
-    padding-top: 4.75rem;
+    position: relative;
+    height: 41.56rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
     #titulo {
-      width: 35rem;//50rem;
+      position: absolute;
+      top: 4.75rem;
+      width: 40rem;
       height: 6.25rem;
 
-      @include Titulo;
+      @include Montserrat_Violet;
+      font-size: 1.5rem; //2.19rem;
+      line-height: 3.13rem;
+      font-weight: $font_weight_bold;
       text-align: center;
 
       h1 {
         margin: 0;
         span {
-          color: #50e3c2;
+          color: $color_lightGreen;
         }
       }
     }
 
     #search_block {
-        position: relative;
-        top: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
+      position: absolute;
+      top: 12.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       #img_search {
         img {
@@ -82,13 +126,15 @@ body {
       }
 
       #search {
+        position: relative;
         width: 34.44rem;
         height: 3.13rem;
-        border: 0.06rem solid #572ee5;
+        border: 0.06rem solid $color_violet;
         border-radius: 1.69rem;
 
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         input {
           border: 0;
@@ -97,13 +143,128 @@ body {
           position: relative;
           left: 3.38rem;
 
-          @include Search;
+          @include Roboto_Gray;
+          font-size: 1rem;
+          font-weight: $font_weight_regular;
+          line-height: 1.19rem;
+
+          text-align: left;
         }
 
         a > img {
+          cursor: pointer;
           position: relative;
-          left: 3.5rem;
+          right: 1.25rem;
         }
+      }
+    }
+
+    #trending {
+      position: relative;
+      height: 3.56rem;
+      top: 32.06rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      h1,
+      h2 {
+        margin: 0;
+
+        @include Montserrat_Violet;
+        line-height: 1.56rem;
+
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.13rem;
+        font-weight: $font_weight_bold;
+      }
+
+      h2 {
+        font-size: 1rem;
+        font-weight: $font_weight_medium;
+      }
+    }
+  }
+  // ----------------------------- SECTION SEARCH ------------------------------- //
+  #sec_trending {
+    background-color: $color_backGrey;
+    position: relative;
+    height: 40rem;
+
+    #title {
+      position: relative;
+      top: 4.19rem;
+      height: 3.94rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      h1,
+      h2 {
+        margin: 0;
+        text-align: center;
+      }
+
+      h1 {
+        @include Montserrat_Violet;
+        font-weight: $font_weight_bold;
+        font-size: 1.56rem;
+        line-height: 1.88rem;
+      }
+
+      h2 {
+        @include Roboto_Black;
+        font-weight: $font_weight_regular;
+        font-size: 1.13rem;
+        line-height: 1.31rem;
+      }
+    }
+  }
+
+  // -------------------------------- FOOTER ------------------------------------ //
+  #footer {
+    background-color: rgba(0, 255, 21, 0.363);
+    position: relative;
+    height: 7.25rem;
+    border-bottom: 0.32rem solid $color_violet;
+    padding: 0 9.75rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    #redes {
+      width: 12.01rem;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      h1 {
+        @include Roboto_Black;
+        font-size: 0.81rem;
+        font-weight: $font_weight_regular;
+        line-height: 0.94rem;
+
+        display: block;
+      }
+    }
+
+    #copyRight {
+      h1 {
+        @include Roboto_Black;
+        font-size: 0.81rem;
+        font-weight: $font_weight_regular;
+        line-height: 0.94rem;
       }
     }
   }
