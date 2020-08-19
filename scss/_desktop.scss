@@ -4,7 +4,7 @@ body {
   margin: auto;
 
   // ---------------------------------- HEADER ---------------------------------- //
-  header {
+  .header {
     padding: 0 9.75rem;
     height: 5.63rem;
     border-top: 0.31rem solid $color_violet;
@@ -12,14 +12,12 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    #logo {
-      img {
-        width: 4.25rem;
-        height: 3.75rem;
-      }
+    &__logo-img {
+      width: 4.25rem;
+      height: 3.75rem;
     }
 
-    #nav_menu {
+    &__nav {
       @include Montserrat_Violet;
       font-size: 0.81rem;
       font-weight: $font_weight_bold;
@@ -32,23 +30,23 @@ body {
       display: flex;
       justify-content: space-between;
 
-      a {
+      &__item {
         cursor: pointer;
         text-decoration: none;
         border-bottom: 0.13rem solid transparent;
       }
 
-      a:hover {
+      &__item:hover {
         border-bottom: 0.13rem solid $color_lightGreen;
       }
 
-      a:active {
+      &__item:active {
         color: $color_grey;
         border-bottom: 0.13rem solid transparent;
       }
     }
 
-    #crear_gif {
+    &__icon-new-gif {
       width: 3.38rem;
       height: 3.38rem;
       border: 0.06rem solid $color_violet;
@@ -65,14 +63,14 @@ body {
       }
     }
 
-    #crear_gif:hover {
+    &__icon-new-gif:hover {
       background: $color_violet;
       a > h1 {
         color: $color_white;
       }
     }
 
-    #crear_gif:active {
+    &__icon-new-gif:active {
       border-color: $color_grey;
       background: $color_grey;
       a > h1 {
@@ -82,7 +80,7 @@ body {
   }
 
   // ----------------------------- SECTION SEARCH ------------------------------- //
-  #sec_search {
+  .sec-search {
     position: relative;
     height: 41.56rem;
 
@@ -90,7 +88,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-    #titulo {
+    &__title {
       position: absolute;
       top: 4.75rem;
       width: 40rem;
@@ -102,7 +100,7 @@ body {
       font-weight: $font_weight_bold;
       text-align: center;
 
-      h1 {
+      h2 {
         margin: 0;
         span {
           color: $color_lightGreen;
@@ -110,14 +108,14 @@ body {
       }
     }
 
-    #search_block {
+    &__block {
       position: absolute;
       top: 12.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
 
-      #img_search {
+      &__block-img {
         img {
           display: block;
           width: 25rem;
@@ -125,7 +123,7 @@ body {
         }
       }
 
-      #search {
+      &__search-box {
         position: relative;
         width: 34.44rem;
         height: 3.13rem;
@@ -159,7 +157,7 @@ body {
       }
     }
 
-    #trending {
+    &__trending {
       position: relative;
       height: 3.56rem;
       top: 32.06rem;
@@ -191,12 +189,12 @@ body {
     }
   }
   // ----------------------------- SECTION SEARCH ------------------------------- //
-  #sec_trending {
+  .sec-trending {
     background-color: $color_backGrey;
     position: relative;
     height: 40rem;
 
-    #title {
+    &__title {
       position: relative;
       top: 4.19rem;
       height: 3.94rem;
@@ -229,8 +227,7 @@ body {
   }
 
   // -------------------------------- FOOTER ------------------------------------ //
-  #footer {
-    background-color: rgba(0, 255, 21, 0.363);
+  .footer {
     position: relative;
     height: 7.25rem;
     border-bottom: 0.32rem solid $color_violet;
@@ -241,7 +238,7 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    #redes {
+    &__community {
       width: 12.01rem;
 
       display: flex;
@@ -257,9 +254,20 @@ body {
 
         display: block;
       }
+
+      &__icon {
+        color: $color_grey;
+      }
+
+      &__icon:hover {
+        color: $color_violet;
+      }
+
+      
+
     }
 
-    #copyRight {
+    &__copy-right {
       h1 {
         @include Roboto_Black;
         font-size: 0.81rem;

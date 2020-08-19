@@ -4,7 +4,7 @@ body {
   margin: auto;
 }
 
-body header {
+body .header {
   padding: 0 9.75rem;
   height: 5.63rem;
   border-top: 0.31rem solid #572ee5;
@@ -13,12 +13,12 @@ body header {
   align-items: center;
 }
 
-body header #logo img {
+body .header__logo-img {
   width: 4.25rem;
   height: 3.75rem;
 }
 
-body header #nav_menu {
+body .header__nav {
   font-family: "Montserrat", sans-serif;
   color: #572ee5;
   letter-spacing: 0;
@@ -32,22 +32,22 @@ body header #nav_menu {
   justify-content: space-between;
 }
 
-body header #nav_menu a {
+body .header__nav__item {
   cursor: pointer;
   text-decoration: none;
   border-bottom: 0.13rem solid transparent;
 }
 
-body header #nav_menu a:hover {
+body .header__nav__item:hover {
   border-bottom: 0.13rem solid #5ed7c6;
 }
 
-body header #nav_menu a:active {
+body .header__nav__item:active {
   color: #9cafc3;
   border-bottom: 0.13rem solid transparent;
 }
 
-body header #crear_gif {
+body .header__icon-new-gif {
   width: 3.38rem;
   height: 3.38rem;
   border: 0.06rem solid #572ee5;
@@ -58,29 +58,29 @@ body header #crear_gif {
   cursor: pointer;
 }
 
-body header #crear_gif a > h1 {
+body .header__icon-new-gif a > h1 {
   margin: 0;
   color: #572ee5;
 }
 
-body header #crear_gif:hover {
+body .header__icon-new-gif:hover {
   background: #572ee5;
 }
 
-body header #crear_gif:hover a > h1 {
+body .header__icon-new-gif:hover a > h1 {
   color: #ffffff;
 }
 
-body header #crear_gif:active {
+body .header__icon-new-gif:active {
   border-color: #9cafc3;
   background: #9cafc3;
 }
 
-body header #crear_gif:active a > h1 {
+body .header__icon-new-gif:active a > h1 {
   color: #ffffff;
 }
 
-body #sec_search {
+body .sec-search {
   position: relative;
   height: 41.56rem;
   display: flex;
@@ -88,7 +88,7 @@ body #sec_search {
   align-items: center;
 }
 
-body #sec_search #titulo {
+body .sec-search__title {
   position: absolute;
   top: 4.75rem;
   width: 40rem;
@@ -102,15 +102,15 @@ body #sec_search #titulo {
   text-align: center;
 }
 
-body #sec_search #titulo h1 {
+body .sec-search__title h2 {
   margin: 0;
 }
 
-body #sec_search #titulo h1 span {
+body .sec-search__title h2 span {
   color: #5ed7c6;
 }
 
-body #sec_search #search_block {
+body .sec-search__block {
   position: absolute;
   top: 12.5rem;
   display: flex;
@@ -118,13 +118,13 @@ body #sec_search #search_block {
   align-items: center;
 }
 
-body #sec_search #search_block #img_search img {
+body .sec-search__block__block-img img {
   display: block;
   width: 25rem;
   height: 11.88rem;
 }
 
-body #sec_search #search_block #search {
+body .sec-search__block__search-box {
   position: relative;
   width: 34.44rem;
   height: 3.13rem;
@@ -135,7 +135,7 @@ body #sec_search #search_block #search {
   justify-content: space-between;
 }
 
-body #sec_search #search_block #search input {
+body .sec-search__block__search-box input {
   border: 0;
   width: 28rem;
   height: 1.38rem;
@@ -150,13 +150,13 @@ body #sec_search #search_block #search input {
   text-align: left;
 }
 
-body #sec_search #search_block #search a > img {
+body .sec-search__block__search-box a > img {
   cursor: pointer;
   position: relative;
   right: 1.25rem;
 }
 
-body #sec_search #trending {
+body .sec-search__trending {
   position: relative;
   height: 3.56rem;
   top: 32.06rem;
@@ -166,8 +166,8 @@ body #sec_search #trending {
   align-items: center;
 }
 
-body #sec_search #trending h1,
-body #sec_search #trending h2 {
+body .sec-search__trending h1,
+body .sec-search__trending h2 {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   color: #572ee5;
@@ -176,23 +176,23 @@ body #sec_search #trending h2 {
   text-align: center;
 }
 
-body #sec_search #trending h1 {
+body .sec-search__trending h1 {
   font-size: 1.13rem;
   font-weight: 700;
 }
 
-body #sec_search #trending h2 {
+body .sec-search__trending h2 {
   font-size: 1rem;
   font-weight: 500;
 }
 
-body #sec_trending {
+body .sec-trending {
   background-color: #F3F5F8;
   position: relative;
   height: 40rem;
 }
 
-body #sec_trending #title {
+body .sec-trending__title {
   position: relative;
   top: 4.19rem;
   height: 3.94rem;
@@ -202,13 +202,13 @@ body #sec_trending #title {
   align-items: center;
 }
 
-body #sec_trending #title h1,
-body #sec_trending #title h2 {
+body .sec-trending__title h1,
+body .sec-trending__title h2 {
   margin: 0;
   text-align: center;
 }
 
-body #sec_trending #title h1 {
+body .sec-trending__title h1 {
   font-family: "Montserrat", sans-serif;
   color: #572ee5;
   letter-spacing: 0;
@@ -217,7 +217,7 @@ body #sec_trending #title h1 {
   line-height: 1.88rem;
 }
 
-body #sec_trending #title h2 {
+body .sec-trending__title h2 {
   font-family: "Roboto", sans-serif;
   color: #000000;
   letter-spacing: 0;
@@ -226,8 +226,7 @@ body #sec_trending #title h2 {
   line-height: 1.31rem;
 }
 
-body #footer {
-  background-color: rgba(0, 255, 21, 0.363);
+body .footer {
   position: relative;
   height: 7.25rem;
   border-bottom: 0.32rem solid #572ee5;
@@ -238,7 +237,7 @@ body #footer {
   align-items: center;
 }
 
-body #footer #redes {
+body .footer__community {
   width: 12.01rem;
   display: flex;
   flex-direction: row;
@@ -246,7 +245,7 @@ body #footer #redes {
   align-items: center;
 }
 
-body #footer #redes h1 {
+body .footer__community h1 {
   font-family: "Roboto", sans-serif;
   color: #000000;
   letter-spacing: 0;
@@ -256,7 +255,15 @@ body #footer #redes h1 {
   display: block;
 }
 
-body #footer #copyRight h1 {
+body .footer__community__icon {
+  color: #9cafc3;
+}
+
+body .footer__community__icon:hover {
+  color: #572ee5;
+}
+
+body .footer__copy-right h1 {
   font-family: "Roboto", sans-serif;
   color: #000000;
   letter-spacing: 0;

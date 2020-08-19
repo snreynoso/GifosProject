@@ -12,71 +12,71 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
+    <!-- ICONOS FONTAWESOME-->
+    <script src="https://kit.fontawesome.com/b1d96e50a4.js" crossorigin="anonymous"></script>
 </head>
-<!-- ICONOS FONTAWESOME-->
-<script src="https://kit.fontawesome.com/b1d96e50a4.js" crossorigin="anonymous"></script>
 
 <body>
-    <!-- ------------------------ HEADER ------------------------ -->
-    <header>
-        <div id="logo">
-            <img src="/src/assets/logo-desktop3.png" alt="logo desktop">
+    <!-- >>>>>>>>>>>>>>>>>>>>>>>>> HEADER <<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+    <header class="header">
+        <div class="header__logo">
+            <img class="header__logo-img" src="/src/assets/logo-desktop3.png" alt="logo desktop">
         </div>
 
-        <nav id="nav_menu">
-            <a>MODO NOCTURNO</a>
-            <a>FAVORITOS</a>
-            <a>MIS GIFOS</a>
+        <nav class="header__nav">
+            <a class="header__nav__item">MODO NOCTURNO</a>
+            <a class="header__nav__item">FAVORITOS</a>
+            <a class="header__nav__item">MIS GIFOS</a>
         </nav>
 
-        <div id="crear_gif">
+        <div class="header__icon-new-gif">
             <a>
                 <h1>+</h1>
             </a>
         </div>
     </header>
 
-    <!-- -------------------- SECTION SEARCH -------------------- -->
-    <section id="sec_search">
-        <div id="titulo">
-            <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h1>
+    <!-- >>>>>>>>>>>>>>>>>> SEARCH SECTION <<<<<<<<<<<<<<<<<<<<< -->
+    <section class="sec-search">
+        <div class="sec-search__title">
+            <h2>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h2>
         </div>
 
-        <div id="search_block">
-            <div id=img_search>
+        <div class="sec-search__block">
+            <div class="sec-search__block__block-img">
                 <img src="/src/assets/ilustra_header.svg" alt="imagen sobre buscador">
             </div>
 
-            <div id="search">
+            <div class="sec-search__block__search-box">
                 <input type="text" value="Busca GIFOS y más">
-                <a><img src="/src/assets/icon-search.svg"></a>
+                <a><img src="/src/assets/icon-search.svg" alt="icon search"></a>
             </div>
         </div>
 
-        <div id="trending">
-            <h1>Trending:</h1>
+        <div class="sec-search__trending">
+            <h2>Trending:</h2>
             <h2>Reactions, Entertainment, Sports, Stickers, Artists</h2>
         </div>
     </section>
 
-    <!-- -------------------- SECTION SEARCH -------------------- -->
-    <section id="sec_trending">
-        <div id="title">
-            <h1>Trending GIFOS</h1>
+    <!-- >>>>>>>>>>>>>>>>> TRENDING SECTION <<<<<<<<<<<<<<<<<< -->
+    <section class="sec-trending">
+        <div class="sec-trending__title">
+            <h2>Trending GIFOS</h2>
             <h2>Mira los últimos GIFO de nuestra comunidad.</h2>
         </div>
     </section>
 
-    <!-- -------------------- SECTION SEARCH -------------------- -->
-    <footer id="footer">
-        <div id="redes">
+    <!-- >>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<< -->
+    <footer class="footer">
+        <div class="footer__community">
             <h1>Compartir en:</h1>
-            <a href="https://es-la.facebook.com/"><i class="fab fa-facebook-square"></i></a>
-            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            <a href="https://es-la.facebook.com/"><i class="footer__community__icon fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/"><i class="footer__community__icon fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="footer__community__icon fab fa-instagram"></i></a>
         </div>
 
-        <div id="copyRight">
+        <div class="footer__copy-right">
             <h1>© GIFOS 2020 All Rights Reserved.</h1>
         </div>
     </footer>
