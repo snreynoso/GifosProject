@@ -10,7 +10,9 @@ $color_black: #000000;
 $color_grey: #9cafc3;
 $color_white: #ffffff;
 $color_lightGreen: #5ed7c6;
-$color_backGrey: #F3F5F8;
+$color_lightGrey: #F3F5F8;
+$color_darkGrey: #37383C;
+$color_dark: #222326;
 
 @mixin Roboto_Gray {
   font-family: $font_Roboto;

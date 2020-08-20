@@ -14,6 +14,7 @@
         rel="stylesheet">
     <!-- ICONOS FONTAWESOME-->
     <script src="https://kit.fontawesome.com/b1d96e50a4.js" crossorigin="anonymous"></script>
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -23,15 +24,15 @@
             <img class="header__logo-img" src="/src/assets/logo-desktop3.png" alt="logo desktop">
         </div>
 
-        <nav class="header__nav">
-            <a class="header__nav__item">MODO NOCTURNO</a>
+        <nav class="header__nav" id="header__nav">
+            <a class="header__nav__item" id="darkSelector">MODO NOCTURNO</a>
             <a class="header__nav__item">FAVORITOS</a>
             <a class="header__nav__item">MIS GIFOS</a>
         </nav>
 
-        <div class="header__icon-new-gif">
+        <div class="header__icon-new-gif" id="header__icon-new-gif">
             <a>
-                <h1>+</h1>
+                <h1 id="header__icon-plus">+</h1>
             </a>
         </div>
     </header>
@@ -55,15 +56,15 @@
 
         <div class="sec-search__trending">
             <h2>Trending:</h2>
-            <h2>Reactions, Entertainment, Sports, Stickers, Artists</h2>
+            <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3>
         </div>
     </section>
 
     <!-- >>>>>>>>>>>>>>>>> TRENDING SECTION <<<<<<<<<<<<<<<<<< -->
-    <section class="sec-trending">
+    <section class="sec-trending" id="sec-trending">
         <div class="sec-trending__title">
             <h2>Trending GIFOS</h2>
-            <h2>Mira los últimos GIFO de nuestra comunidad.</h2>
+            <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
         </div>
     </section>
 
