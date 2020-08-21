@@ -22,6 +22,7 @@
     <header class="header">
         <div class="header__logo">
             <img class="header__logo-img" src="/src/assets/logo-desktop3.png" alt="logo desktop">
+            <img class="header__logo-img-noc" src="/src/assets/logo-desktop-noc3.png" alt="logo desktop">
         </div>
 
         <nav class="header__nav" id="header__nav">
@@ -49,14 +50,19 @@
             </div>
 
             <div class="sec-search__block__search-box">
-                <input type="text" value="Busca GIFOS y más">
-                <a><img src="/src/assets/icon-search.svg" alt="icon search"></a>
+                <input id="search" type="search" value="Busca GIFOS y más">
+                <a><img id="btn-search" class="icon-search" src="/src/assets/icon-search.svg" alt="icon search"></a> 
+                <a><img id="btn-search-noc" class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg" alt="icon search dark mode"></a> 
             </div>
         </div>
 
         <div class="sec-search__trending">
             <h2>Trending:</h2>
             <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3>
+        </div>
+
+        <div class="sec-search__video-result">
+            <video id="video-search" autoplay loop></video>
         </div>
     </section>
 
