@@ -26,7 +26,7 @@
         </div>
 
         <nav class="header__nav" id="header__nav">
-            <a class="header__nav__item" id="darkSelector">MODO NOCTURNO</a>
+            <a class="header__nav__item" id="darkSelector" onclick="myApp.EventHandlers.changeModeDark()">MODO NOCTURNO</a>
             <a class="header__nav__item">FAVORITOS</a>
             <a class="header__nav__item">MIS GIFOS</a>
         </nav>
@@ -50,9 +50,9 @@
             </div>
 
             <div class="sec-search__block__search-box">
-                <input id="search" type="search" value="Busca GIFOS y más">
-                <a><img id="btn-search" class="icon-search" src="/src/assets/icon-search.svg" alt="icon search"></a> 
-                <a><img id="btn-search-noc" class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg" alt="icon search dark mode"></a> 
+                <input onclick="myApp.EventHandlers.cleanSearch()" id="search" type="search" value="Busca GIFOS y más">
+                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search" class="icon-search" src="/src/assets/icon-search.svg" alt="icon search"></a> 
+                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc" class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg" alt="icon search dark mode"></a> 
             </div>
         </div>
 
