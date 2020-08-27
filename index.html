@@ -26,7 +26,8 @@
         </div>
 
         <nav class="header__nav" id="header__nav">
-            <a class="header__nav__item" id="darkSelector" onclick="myApp.EventHandlers.changeModeDark()">MODO NOCTURNO</a>
+            <a class="header__nav__item" id="darkSelector" onclick="myApp.EventHandlers.changeModeDark()">MODO
+                NOCTURNO</a>
             <a class="header__nav__item">FAVORITOS</a>
             <a class="header__nav__item">MIS GIFOS</a>
         </nav>
@@ -51,8 +52,11 @@
 
             <div class="sec-search__block__search-box">
                 <input onclick="myApp.EventHandlers.cleanSearch()" id="search" type="search" value="Busca GIFOS y más">
-                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search" class="icon-search" src="/src/assets/icon-search.svg" alt="icon search"></a> 
-                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc" class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg" alt="icon search dark mode"></a> 
+                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search" class="icon-search"
+                        src="/src/assets/icon-search.svg" alt="icon search"></a>
+                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc"
+                        class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg"
+                        alt="icon search dark mode"></a>
             </div>
         </div>
 
@@ -71,6 +75,34 @@
         <div class="sec-trending__title">
             <h2>Trending GIFOS</h2>
             <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+        </div>
+
+        <div class="sec-trending__gifs">
+            <img src="src/assets/button-left.svg" class="sec-trending__gifs__arrows" alt="trending arrow scan">
+            
+            <div class="gifo-card">
+                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 1">
+                <div class="gifo-card__caption">
+                    <h2 class="gifo-card__user">User</h2>
+                    <h2 class="gifo-card__title">Titulo GIFO</h2>
+                </div>
+            </div>
+            <div class="gifo-card">
+                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 2">
+                <div class="gifo-card__caption">
+                    <h2 class="gifo-card__user">User</h2>
+                    <h2 class="gifo-card__title">Titulo GIFO</h2>
+                </div>
+            </div>
+            <div class="gifo-card">
+                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 3">
+                <div class="gifo-card__caption">
+                    <h2 class="gifo-card__user">User</h2>
+                    <h2 class="gifo-card__title">Titulo GIFO</h2>
+                </div>
+            </div>
+           
+            <img src="src/assets/button-right.svg" class="sec-trending__gifs__arrows" alt="trending arrow scan">
         </div>
     </section>
 

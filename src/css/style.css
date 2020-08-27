@@ -16,7 +16,9 @@ body.dark {
   background: #37383C;
 }
 
-body.dark h1, body.dark h2, body.dark h3 {
+body.dark h1,
+body.dark h2,
+body.dark h3 {
   color: #ffffff;
 }
 
@@ -151,7 +153,7 @@ body.dark .header__icon-new-gif:active a > h1 {
 
 .sec-search {
   position: relative;
-  height: 100rem;
+  height: 41.56rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -325,6 +327,78 @@ body.dark .sec-trending {
   font-weight: 400;
   font-size: 1.13rem;
   line-height: 1.31rem;
+}
+
+.sec-trending__gifs {
+  position: relative;
+  top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5.88rem;
+}
+
+.sec-trending__gifs__arrows {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.06rem solid #572ee5;
+  padding: 0.74rem;
+}
+
+.gifo-card {
+  position: relative;
+  max-width: 22.31rem;
+  width: 100%;
+  height: 17.19rem;
+  z-index: 10000;
+}
+
+.gifo-card__caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.gifo-card:hover .gifo-card__caption {
+  opacity: 1;
+  background: #572ee5;
+  opacity: 0.6;
+}
+
+.gifo-card__user {
+  visibility: hidden;
+  position: absolute;
+  top: 11.31rem;
+  left: 1.13rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 0.94rem;
+  line-height: 1.13rem;
+  color: #ffffff;
+}
+
+.gifo-card__title {
+  visibility: hidden;
+  position: absolute;
+  top: 12.81rem;
+  left: 1.16rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.19rem;
+  color: #ffffff;
+}
+
+.gifo-card:hover .gifo-card__user {
+  visibility: visible;
+}
+
+.gifo-card:hover .gifo-card__title {
+  visibility: visible;
 }
 
 .footer {

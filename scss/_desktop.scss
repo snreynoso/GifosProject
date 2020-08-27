@@ -1,380 +1,455 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-  width: 90rem;
-  padding: 0;
-  margin: auto;
-  background: $color_white;
-  transition: 0.3s ease all; // To make softer the change of the background color
+	width: 90rem;
+	padding: 0;
+	margin: auto;
+	background: $color_white;
+	transition: 0.3s ease all; // To make softer the change of the background color
 
-  &.dark {
-    background: $color_darkGrey;
+	&.dark {
+		background: $color_darkGrey;
 
-    h1, h2, h3 {
-      color: $color_white;
-    }
-  }
+		h1,
+		h2,
+		h3 {
+			color: $color_white;
+		}
+	}
 }
 
 // ---------------------------------- HEADER ---------------------------------- //
 .header {
-  position: relative;
-  padding: 0 9.75rem;
-  height: 5.63rem;
-  border-top: 0.31rem solid $color_violet;
-  display: flex;
-  align-items: center;
+	position: relative;
+	padding: 0 9.75rem;
+	height: 5.63rem;
+	border-top: 0.31rem solid $color_violet;
+	display: flex;
+	align-items: center;
 
-  &__logo-img {
-    width: 4.25rem;
-    height: 3.75rem;
-    position: absolute;
-    transform: translateY(-50%);  
+	&__logo-img {
+		width: 4.25rem;
+		height: 3.75rem;
+		position: absolute;
+		transform: translateY(-50%);
 
-    body.dark & {
-      visibility: hidden;
-    }
-  }
+		body.dark & {
+			visibility: hidden;
+		}
+	}
 
-  &__logo-img-noc {
-    width: 4.25rem;
-    height: 3.75rem;
-    position: absolute;
-    transform: translateY(-50%);
-    visibility: hidden;
+	&__logo-img-noc {
+		width: 4.25rem;
+		height: 3.75rem;
+		position: absolute;
+		transform: translateY(-50%);
+		visibility: hidden;
 
-    body.dark & {
-      visibility: visible;
-    }
-  }
+		body.dark & {
+			visibility: visible;
+		}
+	}
 
-  &__nav {
-    @include Montserrat_Violet;
-    font-size: 0.81rem;
-    font-weight: $font_weight_bold;
-    line-height: 1rem;
+	&__nav {
+		@include Montserrat_Violet;
+		font-size: 0.81rem;
+		font-weight: $font_weight_bold;
+		line-height: 1rem;
 
-    position: absolute;
-    right: 16.84rem;
-    width: 23.35rem;
+		position: absolute;
+		right: 16.84rem;
+		width: 23.35rem;
 
-    display: flex;
-    justify-content: space-between;
+		display: flex;
+		justify-content: space-between;
 
-    &__item {
-      cursor: pointer;
-      text-decoration: none;
-      border-bottom: 0.13rem solid transparent;
+		&__item {
+			cursor: pointer;
+			text-decoration: none;
+			border-bottom: 0.13rem solid transparent;
 
-      body.dark & {
-        color: $color_white;
-      }
-    }
+			body.dark & {
+				color: $color_white;
+			}
+		}
 
-    &__item:hover {
-      border-bottom: 0.13rem solid $color_lightGreen;
-    }
+		&__item:hover {
+			border-bottom: 0.13rem solid $color_lightGreen;
+		}
 
-    &__item:active {
-      color: $color_grey;
-      border-bottom: 0.13rem solid transparent;
+		&__item:active {
+			color: $color_grey;
+			border-bottom: 0.13rem solid transparent;
 
-      body.dark & {
-        color: $color_grey;
-      }
-    }
-  }
+			body.dark & {
+				color: $color_grey;
+			}
+		}
+	}
 
-  &__icon-new-gif {
-    width: 3.38rem;
-    height: 3.38rem;
-    border: 0.1rem solid $color_violet;
-    border-radius: 1.9rem;
-    position: absolute;
-    right: 9.75rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	&__icon-new-gif {
+		width: 3.38rem;
+		height: 3.38rem;
+		border: 0.1rem solid $color_violet;
+		border-radius: 1.9rem;
+		position: absolute;
+		right: 9.75rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-    cursor: pointer;
+		cursor: pointer;
 
-    body.dark & {
-      border-color: $color_white;
-    }
+		body.dark & {
+			border-color: $color_white;
+		}
 
-    a > h1 {
-      margin: 0;
-      color: $color_violet;
+		a > h1 {
+			margin: 0;
+			color: $color_violet;
 
-      body.dark & {
-        color: $color_white;
-      }
-    }
+			body.dark & {
+				color: $color_white;
+			}
+		}
 
-    &:hover {
-      background: $color_violet;
-      a > h1 {
-        color: $color_white;
-      }
+		&:hover {
+			background: $color_violet;
+			a > h1 {
+				color: $color_white;
+			}
 
-      body.dark & {
-        background-color: $color_white;
+			body.dark & {
+				background-color: $color_white;
 
-        a > h1 {
-          color: $color_black;
-        }
-      }
-    }
+				a > h1 {
+					color: $color_black;
+				}
+			}
+		}
 
-    &:active {
-      border-color: $color_grey;
-      background: $color_grey;
+		&:active {
+			border-color: $color_grey;
+			background: $color_grey;
 
-      body.dark & {
-        border-color: $color_grey;
-        background: $color_grey;
-      }
+			body.dark & {
+				border-color: $color_grey;
+				background: $color_grey;
+			}
 
-      a > h1 {
-        color: $color_white;
+			a > h1 {
+				color: $color_white;
 
-        body.dark & {
-          color: $color_white;
-        }
-      }
-    }
-  }
+				body.dark & {
+					color: $color_white;
+				}
+			}
+		}
+	}
 }
 
 // ----------------------------- SECTION SEARCH ------------------------------- //
 .sec-search {
-  position: relative;
-  height: 100rem;//41.56rem;
-  //height: fit-content;
+	position: relative;
+	height: 41.56rem;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-  &__title {
-    position: absolute;
-    top: 4.75rem;
-    width: 40rem;
-    height: 6.25rem;
+	&__title {
+		position: absolute;
+		top: 4.75rem;
+		width: 40rem;
+		height: 6.25rem;
 
-    @include Montserrat_Violet;
-    font-size: 1.5rem; //2.19rem;
-    line-height: 3.13rem;
-    font-weight: $font_weight_bold;
-    text-align: center;
+		@include Montserrat_Violet;
+		font-size: 1.5rem; //2.19rem;
+		line-height: 3.13rem;
+		font-weight: $font_weight_bold;
+		text-align: center;
 
-    h2 {
-      margin: 0;
-      span {
-        color: $color_lightGreen;
-      }
-    }
-  }
+		h2 {
+			margin: 0;
+			span {
+				color: $color_lightGreen;
+			}
+		}
+	}
 
-  &__block {
-    position: absolute;
-    top: 12.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	&__block {
+		position: absolute;
+		top: 12.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-    &__block-img {
-      img {
-        display: block;
-        width: 25rem;
-        height: 11.88rem;
-      }
-    }
+		&__block-img {
+			img {
+				display: block;
+				width: 25rem;
+				height: 11.88rem;
+			}
+		}
 
-    &__search-box {
-      position: relative;
-      width: 34.44rem;
-      height: 3.13rem;
-      border: 0.06rem solid $color_violet;
-      border-radius: 1.69rem;
+		&__search-box {
+			position: relative;
+			width: 34.44rem;
+			height: 3.13rem;
+			border: 0.06rem solid $color_violet;
+			border-radius: 1.69rem;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 
-      body.dark & {
-        border-color: $color_white;
-      }
+			body.dark & {
+				border-color: $color_white;
+			}
 
-      input {
-        border: 0;
-        width: 28rem;
-        height: 1.38rem;
-        position: relative;
-        left: 3.38rem;
-        background: transparent;
-        outline: none; //Delete the black line adding by Chrome
+			input {
+				border: 0;
+				width: 28rem;
+				height: 1.38rem;
+				position: relative;
+				left: 3.38rem;
+				background: transparent;
+				outline: none; //Delete the black line adding by Chrome
 
+				@include Roboto_Gray;
+				font-size: 1rem;
+				font-weight: $font_weight_regular;
+				line-height: 1.19rem;
 
-        @include Roboto_Gray;
-        font-size: 1rem;
-        font-weight: $font_weight_regular;
-        line-height: 1.19rem;
+				text-align: left;
+			}
 
-        text-align: left;
-      }
+			a > .icon-search {
+				cursor: pointer;
+				position: absolute;
+				right: 1rem;
+				top: 0.8rem;
 
-      a > .icon-search {
-        cursor: pointer;
-        position: absolute;
-        right: 1rem;
-        top: 0.8rem;
+				body.dark & {
+					visibility: hidden;
+				}
+			}
 
-        body.dark & {
-          visibility: hidden;
-        }
-      }
+			a > .icon-search-noc {
+				cursor: pointer;
+				position: absolute;
+				right: 1rem;
+				top: 0.8rem;
+				visibility: hidden;
 
-      a > .icon-search-noc {
-        cursor: pointer;
-        position: absolute;
-        right: 1rem;
-        top: 0.8rem;
-        visibility: hidden;
+				body.dark & {
+					visibility: visible;
+				}
+			}
+		}
+	}
 
-        body.dark & {
-          visibility: visible;
-        }
-      }
-    }
-  }
+	&__video-result {
+		position: relative;
+		top: 40rem;
+	}
 
-  &__video-result {
-    position: relative;
-    top: 40rem;
-  }
-  
-  &__trending {
-    position: relative;
-    height: 3.56rem;
-    top: 32.06rem;
+	&__trending {
+		position: relative;
+		height: 3.56rem;
+		top: 32.06rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
 
-    h2,
-    h3 {
-      margin: 0;
+		h2,
+		h3 {
+			margin: 0;
 
-      @include Montserrat_Violet;
-      line-height: 1.56rem;
+			@include Montserrat_Violet;
+			line-height: 1.56rem;
 
-      text-align: center;
-    }
+			text-align: center;
+		}
 
-    h2 {
-      font-size: 1.13rem;
-      font-weight: $font_weight_bold;
-    }
+		h2 {
+			font-size: 1.13rem;
+			font-weight: $font_weight_bold;
+		}
 
-    h3 {
-      font-size: 1rem;
-      font-weight: $font_weight_medium;
-    }
-  }
+		h3 {
+			font-size: 1rem;
+			font-weight: $font_weight_medium;
+		}
+	}
 }
 // ----------------------------- SECTION SEARCH ------------------------------- //
 .sec-trending {
-  background-color: $color_lightGrey;
-  position: relative;
-  height: 40rem;
+	background-color: $color_lightGrey;
+	position: relative;
+	height: 40rem;
 
-  body.dark & {
-    background-color: $color_dark;
-  }
+	body.dark & {
+		background-color: $color_dark;
+	}
 
-  &__title {
-    position: relative;
-    top: 4.19rem;
-    height: 3.94rem;
+	&__title {
+		position: relative;
+		top: 4.19rem;
+		height: 3.94rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
 
-    h2,
-    h3 {
-      margin: 0;
-      text-align: center;
-    }
+		h2,
+		h3 {
+			margin: 0;
+			text-align: center;
+		}
 
-    h2 {
-      @include Montserrat_Violet;
-      font-weight: $font_weight_bold;
-      font-size: 1.56rem;
-      line-height: 1.88rem;
-    }
+		h2 {
+			@include Montserrat_Violet;
+			font-weight: $font_weight_bold;
+			font-size: 1.56rem;
+			line-height: 1.88rem;
+		}
 
-    h3 {
-      @include Roboto_Black;
-      font-weight: $font_weight_regular;
-      font-size: 1.13rem;
-      line-height: 1.31rem;
-    }
-  }
+		h3 {
+			@include Roboto_Black;
+			font-weight: $font_weight_regular;
+			font-size: 1.13rem;
+			line-height: 1.31rem;
+		}
+	}
+
+	&__gifs {
+		position: relative;
+		top: 2rem;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin: 5.88rem;
+
+		&__arrows {
+			width: 2.5rem;
+			height: 2.5rem;
+			border: 0.06rem solid $color_violet;
+			padding: 0.74rem;
+		}
+	}
+}
+
+.gifo-card {
+	position: relative;
+	max-width: 22.31rem;
+	width: 100%;
+	height: 17.19rem;
+	z-index: 10000;
+
+	&__caption {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		
+	}
+
+	&:hover &__caption {
+		opacity: 1;
+		background:$color_violet;
+		opacity: 0.6;
+	}
+
+	&__user {
+		visibility: hidden;
+		position: absolute;
+		top: 11.31rem;
+		left: 1.13rem;
+		font-family: $font_Roboto;
+		font-weight: $font_weight_regular;
+		font-size: 0.94rem;
+		line-height: 1.13rem;
+		color: $color_white;
+	}
+
+	&__title {
+		visibility: hidden;
+		position: absolute;
+		top: 12.81rem;
+		left: 1.16rem;
+		font-family: $font_Roboto;
+		font-weight: $font_weight_bold;
+		font-size: 1rem;
+		line-height: 1.19rem;
+		color: $color_white;
+	}
+
+	&:hover {
+		.gifo-card__user {
+			visibility: visible;
+		}
+
+		.gifo-card__title {
+			visibility: visible;
+		}
+	}
 }
 
 // -------------------------------- FOOTER ------------------------------------ //
 .footer {
-  position: relative;
-  height: 7.25rem;
-  border-bottom: 0.32rem solid $color_violet;
-  padding: 0 9.75rem;
+	position: relative;
+	height: 7.25rem;
+	border-bottom: 0.32rem solid $color_violet;
+	padding: 0 9.75rem;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 
-  &__community {
-    width: 12.01rem;
+	&__community {
+		width: 12.01rem;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 
-    h1 {
-      @include Roboto_Black;
-      font-size: 0.81rem;
-      font-weight: $font_weight_regular;
-      line-height: 0.94rem;
+		h1 {
+			@include Roboto_Black;
+			font-size: 0.81rem;
+			font-weight: $font_weight_regular;
+			line-height: 0.94rem;
 
-      display: block;
-    }
+			display: block;
+		}
 
-    &__icon {
-      color: $color_grey;
-    }
+		&__icon {
+			color: $color_grey;
+		}
 
-    &__icon:hover {
-      color: $color_violet;
-    }
-  }
+		&__icon:hover {
+			color: $color_violet;
+		}
+	}
 
-  &__copy-right {
-    h1 {
-      @include Roboto_Black;
-      font-size: 0.81rem;
-      font-weight: $font_weight_regular;
-      line-height: 0.94rem;
-    }
-  }
+	&__copy-right {
+		h1 {
+			@include Roboto_Black;
+			font-size: 0.81rem;
+			font-weight: $font_weight_regular;
+			line-height: 0.94rem;
+		}
+	}
 }
