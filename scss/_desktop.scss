@@ -156,8 +156,8 @@ body {
 .sec-search {
 	position: relative;
 
-	min-height: 41.56rem;
-	height: auto;
+	min-height: 110rem;//41.56rem;
+	height: fit-content;
 
 	display: flex;
 	flex-direction: column;
@@ -295,6 +295,81 @@ body {
 			font-weight: $font_weight_medium;
 		}
 	}
+
+	&__line-top-result {
+		position: relative;
+		top: 30rem;
+		width: 21.13rem;
+		height: 0.01rem;
+		background-color: $color_grey;
+
+		body.dark & {
+			background-color: $color_white;
+		}
+	}
+
+	&__title-reult {
+		position: relative;
+		top: 35rem;
+		font-family: $font_Montserrat;
+		font-weight: $font_weight_bold;
+		color: $color_violet;
+		font-size: 2.2rem;
+
+		body.dark & {
+			color: $color_white;
+		}
+	}
+
+	&__gifs {
+		position: relative;
+		top: 38.7rem;
+		display: grid;
+		grid-template-columns: auto auto auto auto;
+		grid-column-gap: 1.8rem;
+		grid-row-gap: 1.8rem;
+	}
+
+	&__see-more {
+		position: relative;
+		top: 44rem;
+		width: 8rem;
+		height: 3.14rem;
+		border: 0.06rem solid $color_violet;
+		border-radius: 1.56rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		font-family: $font_Montserrat;
+		font-weight: $font_weight_bold;
+		color: $color_violet;
+		font-size: 0.81rem;
+		line-height: 1rem;
+
+		body.dark & {
+			color: $color_white;
+			border-color: $color_white;
+
+		}
+	}
+
+	&__see-more:hover {
+		color: $color_white;
+		background-color: $color_violet;
+
+		body.dark & {
+			color: $color_black;
+			background-color: $color_white;
+		}
+	}
+}
+
+.card-search {
+	position: relative;
+	max-width: 16.25rem;
+	width: 100%;
+	height: 12.5rem;
 }
 // ----------------------------- SECTION SEARCH ------------------------------- //
 .sec-trending {
@@ -385,8 +460,6 @@ body {
 }
 
 .gifo-card {
-
-
 	&:hover .gifo-card__caption {
 		background: $color_violet;
 		opacity: 0.6;
@@ -403,7 +476,7 @@ body {
 		&__user {
 			//visibility: hidden;
 			position: absolute;
-			top: 11.31rem;
+			top: 66%;//11.31rem;
 			left: 1.13rem;
 			font-family: $font_Roboto;
 			font-weight: $font_weight_regular;
@@ -415,7 +488,7 @@ body {
 		&__title {
 			//visibility: hidden;
 			position: absolute;
-			top: 12.81rem;
+			top: 75%;//12.81rem;
 			left: 1.16rem;
 			font-family: $font_Roboto;
 			font-weight: $font_weight_bold;
@@ -467,8 +540,6 @@ body {
 		}
 	}
 }
-
-
 
 .card-trending {
 	position: relative;
