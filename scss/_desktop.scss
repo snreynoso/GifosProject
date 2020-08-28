@@ -155,7 +155,9 @@ body {
 // ----------------------------- SECTION SEARCH ------------------------------- //
 .sec-search {
 	position: relative;
-	height: 41.56rem;
+
+	min-height: 41.56rem;
+	height: auto;
 
 	display: flex;
 	flex-direction: column;
@@ -228,7 +230,7 @@ body {
 				text-align: left;
 			}
 
-			a > .icon-search {
+			a > img {
 				cursor: pointer;
 				position: absolute;
 				right: 1rem;
@@ -239,6 +241,7 @@ body {
 				}
 			}
 
+			
 			a > .icon-search-noc {
 				cursor: pointer;
 				position: absolute;
@@ -255,7 +258,11 @@ body {
 
 	&__video-result {
 		position: relative;
+		height: auto;
 		top: 40rem;
+		//width: 100%;
+		//height: 100%;
+		//top: 0;
 	}
 
 	&__trending {
@@ -338,22 +345,52 @@ body {
 		justify-content: space-between;
 		align-items: center;
 		margin: 5.88rem;
+	}
 
-		&__arrows {
-			width: 2.5rem;
-			height: 2.5rem;
-			border: 0.06rem solid $color_violet;
-			padding: 0.74rem;
+	&__icon-arrow-left{
+		width: 2.5rem;
+		height: 2.5rem;
+		background: url(/src/assets/button-slider-left.svg) no-repeat;
+
+		body.dark & {
+			background: url(/src/assets/button-slider-left-md-noct.svg) no-repeat;
+		}
+	}
+	
+	&__icon-arrow-left:hover{
+		background: url(/src/assets/button-slider-left-hover.svg) no-repeat;
+
+		body.dark & {
+			background-color:$color_black;
+			filter: invert(1);	
+		}
+	}
+
+	&__icon-arrow-right{
+		width: 2.5rem;
+		height: 2.5rem;
+		background: url(/src/assets/button-slider-right.svg) no-repeat;
+		body.dark & {
+			background: url(/src/assets/button-slider-right-md-noct.svg) no-repeat;
+		}
+	}
+
+	&__icon-arrow-right:hover{
+		background: url(/src/assets/Button-Slider-right-hover.svg) no-repeat;
+		body.dark & {
+			background-color:$color_black;
+			filter: invert(1);	
 		}
 	}
 }
 
 .gifo-card {
-	position: relative;
-	max-width: 22.31rem;
-	width: 100%;
-	height: 17.19rem;
-	z-index: 10000;
+
+
+	&:hover .gifo-card__caption {
+		background: $color_violet;
+		opacity: 0.6;
+	}
 
 	&__caption {
 		position: absolute;
@@ -363,47 +400,81 @@ body {
 		height: 100%;
 		opacity: 0;
 		
-	}
-
-	&:hover &__caption {
-		opacity: 1;
-		background:$color_violet;
-		opacity: 0.6;
-	}
-
-	&__user {
-		visibility: hidden;
-		position: absolute;
-		top: 11.31rem;
-		left: 1.13rem;
-		font-family: $font_Roboto;
-		font-weight: $font_weight_regular;
-		font-size: 0.94rem;
-		line-height: 1.13rem;
-		color: $color_white;
-	}
-
-	&__title {
-		visibility: hidden;
-		position: absolute;
-		top: 12.81rem;
-		left: 1.16rem;
-		font-family: $font_Roboto;
-		font-weight: $font_weight_bold;
-		font-size: 1rem;
-		line-height: 1.19rem;
-		color: $color_white;
-	}
-
-	&:hover {
-		.gifo-card__user {
-			visibility: visible;
+		&__user {
+			//visibility: hidden;
+			position: absolute;
+			top: 11.31rem;
+			left: 1.13rem;
+			font-family: $font_Roboto;
+			font-weight: $font_weight_regular;
+			font-size: 0.94rem;
+			line-height: 1.13rem;
+			color: $color_white;
 		}
 
-		.gifo-card__title {
-			visibility: visible;
+		&__title {
+			//visibility: hidden;
+			position: absolute;
+			top: 12.81rem;
+			left: 1.16rem;
+			font-family: $font_Roboto;
+			font-weight: $font_weight_bold;
+			font-size: 1rem;
+			line-height: 1.19rem;
+			color: $color_white;
+		}
+
+		&__icons-group {
+			//visibility: hidden;
+			z-index: 10;
+			position: absolute;
+			top: 0.63rem;
+			right: 0.63rem;
+			width: 7.31rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+
+			div {
+				width: 2rem;
+				height: 2rem;
+				border-radius: 0.38rem;
+			}
+
+			.icon-like {
+				background: url(/src/assets/icon-fav.svg);
+			}
+			
+			.icon-like:hover {
+				background: url(/src/assets/icon-fav-hover.svg);
+			}
+			
+			.icon-download {
+				background: url(/src/assets/icon-download.svg);
+			}
+			
+			.icon-download:hover {
+				background: url(/src/assets/icon-download-hover.svg);
+			}
+			
+			.icon-max {
+				background: url(/src/assets/icon-max-normal.svg);
+			}
+			
+			.icon-max:hover {
+				background: url(/src/assets/icon-max-hover.svg);
+			}
 		}
 	}
+}
+
+
+
+.card-trending {
+	position: relative;
+	max-width: 22.31rem;
+	width: 100%;
+	height: 17.19rem;
 }
 
 // -------------------------------- FOOTER ------------------------------------ //

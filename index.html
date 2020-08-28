@@ -10,11 +10,12 @@
     <link rel="shortcut icon" type="image/png" href="/src/assets/logo-desktop3.png">
     <!-- GOOGLE FONTS-->
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <!-- ICONOS FONTAWESOME-->
     <script src="https://kit.fontawesome.com/b1d96e50a4.js" crossorigin="anonymous"></script>
-    <script defer src="script.js"></script>
+
+    
 </head>
 
 <body>
@@ -78,31 +79,46 @@
         </div>
 
         <div class="sec-trending__gifs">
-            <img src="src/assets/button-left.svg" class="sec-trending__gifs__arrows" alt="trending arrow scan">
+            <div class="sec-trending__icon-arrow-left"></div>
             
-            <div class="gifo-card">
+            <div id="gifo-trending-01" class="gifo-card card-trending">
                 <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 1">
                 <div class="gifo-card__caption">
-                    <h2 class="gifo-card__user">User</h2>
-                    <h2 class="gifo-card__title">Titulo GIFO</h2>
+                    <h2 class="gifo-card__caption__user">User</h2>
+                    <h2 class="gifo-card__caption__title">Titulo GIFO</h2>
+                    <div class="gifo-card__caption__icons-group">
+                        <div class="icon-like"></div>
+                        <div class="icon-download"></div>
+                        <div class="icon-max"></div>  
+                    </div>
                 </div>
             </div>
-            <div class="gifo-card">
-                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 2">
+            <div id="gifo-trending-02" class="gifo-card card-trending">
+                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 1">
                 <div class="gifo-card__caption">
-                    <h2 class="gifo-card__user">User</h2>
-                    <h2 class="gifo-card__title">Titulo GIFO</h2>
+                    <h2 class="gifo-card__caption__user">User</h2>
+                    <h2 class="gifo-card__caption__title">Titulo GIFO</h2>
+                    <div class="gifo-card__caption__icons-group">
+                        <div class="icon-like"></div>
+                        <div class="icon-download"></div>
+                        <div class="icon-max"></div>  
+                    </div>
                 </div>
             </div>
-            <div class="gifo-card">
-                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 3">
+            <div id="gifo-trending-03" class="gifo-card card-trending">
+                <img class="gifo-card__img" src="https://via.placeholder.com/357x275" alt="gifo trending 1">
                 <div class="gifo-card__caption">
-                    <h2 class="gifo-card__user">User</h2>
-                    <h2 class="gifo-card__title">Titulo GIFO</h2>
+                    <h2 class="gifo-card__caption__user">User</h2>
+                    <h2 class="gifo-card__caption__title">Titulo GIFO</h2>
+                    <div class="gifo-card__caption__icons-group">
+                        <div class="icon-like"></div>
+                        <div class="icon-download"></div>
+                        <div class="icon-max"></div>  
+                    </div>
                 </div>
             </div>
-           
-            <img src="src/assets/button-right.svg" class="sec-trending__gifs__arrows" alt="trending arrow scan">
+
+            <div class="sec-trending__icon-arrow-right"></div>
         </div>
     </section>
 
@@ -119,6 +135,8 @@
             <h1>© GIFOS 2020 All Rights Reserved.</h1>
         </div>
     </footer>
+
+    <script defer src="script.js"></script>
 </body>
 
 </html>

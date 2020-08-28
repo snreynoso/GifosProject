@@ -22,6 +22,9 @@ myApp.EventHandlers = {
                 if (keycode == "Enter") {
                     let keyword = document.querySelector("#search").value;
                     //Funcion gifo search
+                    Giphy.getUrlAsync(keyword, function (videoURL){
+                        document.querySelector("#video-search").src = videoURL;
+                    });
                     console.log('Yendo a buscar gifo: ' + keyword);
                 } else {
                     //Funcion gifo sugerencias
@@ -42,6 +45,7 @@ document.querySelector("#btn-search").addEventListener("click", function () {
     });
 });
 
+
 document
     .querySelector("#btn-search-noc")
     .addEventListener("click", function () {
@@ -50,6 +54,7 @@ document
             document.querySelector("#video-search").src = videoURL;
         });
     });
+*/
 
 class Giphy {
     constructor(keyword) {
@@ -83,4 +88,3 @@ class Giphy {
         return new Giphy(keyword).getGifUrl(callback);
     }
 }
-*/
