@@ -1,13 +1,17 @@
 var myApp = myApp || {};
 const GIPHY_KEY = '2256WmPycPBqyzJaDx6Gzx0IoZspB7Ml';
+var gifoSearchArray = [];
+var numGifSearch = 24;
 
 // FUNCTION SEARCH GIFO
 function gifoSearch(keyword, GIPHY_KEY) {
-    fetch(`http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${GIPHY_KEY}&limit=12`)
+    fetch(`http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${GIPHY_KEY}&limit=${numGifSearch}`)
         .then(res => res.json())
-        .then(gif => {
+        .then(gifArray => {
 
-            let cont = 0;
+            for(let i = 0; i < numGifSearch; i++) {
+                gifoSearchArray[i] = gifArray.data[i];
+            }
 
             let gifosElement = document.querySelector('#gifos');
 
@@ -18,36 +22,43 @@ function gifoSearch(keyword, GIPHY_KEY) {
                  <h2 class="sec-search-display__title-result">${keyword}</h2>
                  <div id="gifo-grid" class="sec-search-display__grid"></div>`;
 
-            let gifoGridElement = document.querySelector('#gifo-grid');
-
-            gif.data.forEach(element => {
-                cont++;
-                let gifoImg = new Image();
-                gifoImg.src = element.images.original.url;
-                let gifoUser = element.username;
-                let gifoTitle = element.title;
-
-                gifoGridElement.innerHTML +=
-                    `<div id="gifo-search-${cont}" class="gifo-card">
-                            <img class="gifo-card__gif card-search" src=${gifoImg.src} alt="gifo search ${cont}">
-                            <div class="gifo-card__middle">
-                                <h2 class="gifo-card__user"> ${gifoUser} </h2>
-                                <h2 class="gifo-card__title"> ${gifoTitle} </h2>
-                                <div class="gifo-card__icons-group">
-                                    <div class="icon-like"></div>
-                                    <div class="icon-download"></div>
-                                    <div class="icon-max"></div>
-                                </div>
-                            </div>
-                        </div>`;
-            });
+            displaySearchGrid(gifoSearchArray, 0, numGifSearch/2);
 
             gifosElement.innerHTML +=
                 `<div>
-                    <p class="sec-search-display__see-more">VER MAS</p>
+                    <p id="see-more" onclick="myApp.EventHandlers.seeMore()" class="sec-search-display__see-more">VER MAS</p>
                 </div>`;
             cont = 0;
+
+            return gifArray.data;
         });
+}
+
+function displaySearchGrid(gifArray, init, finish) {
+
+    let gifoGridElement = document.querySelector('#gifo-grid');
+
+    for (let i = init; i < finish; i++) {
+        let gifoImg = new Image();
+
+        gifoImg.src = gifArray[i].images.original.url;
+        let gifoUser = gifArray[i].username;
+        let gifoTitle = gifArray[i].title;
+
+        gifoGridElement.innerHTML +=
+            `<div id="gifo-search-${i+1}" class="gifo-card card-search">
+                <img class="gifo-card__gif card-search" src=${gifoImg.src} alt="gifo search ${i+1}">
+                <div class="gifo-card__middle">
+                    <h2 class="gifo-card__user"> ${gifoUser} </h2>
+                    <h2 class="gifo-card__title"> ${gifoTitle} </h2>
+                    <div class="gifo-card__icons-group">
+                        <div class="icon-like"></div>
+                        <div class="icon-download"></div>
+                        <div class="icon-max"></div>
+                    </div>
+                </div>
+            </div>`;
+    }
 }
 
 function gifoTrending(GIPHY_KEY) {
@@ -67,8 +78,8 @@ function gifoTrending(GIPHY_KEY) {
                 let gifoTitle = element.title;
 
                 let gifoTrending = document.querySelector(`#gifo-trendig-${cont}`);
-                
-                gifoTrending.innerHTML +=      
+
+                gifoTrending.innerHTML +=
                     `<img class="gifo-card__gif card-trending" src=${gifoImg.src} alt="gifo trending ${cont}">
                         <div class="gifo-card__middle">
                             <h2 class="gifo-card__user"> ${gifoUser} </h2>
@@ -80,8 +91,6 @@ function gifoTrending(GIPHY_KEY) {
                             </div>
                         </div>
                     </div>`;
-
-                    
             });
 
             let parent = document.querySelector('#arrow-left');
@@ -107,6 +116,10 @@ myApp.EventHandlers = {
         let keyword = document.querySelector("#search").value;
         gifoSearch(keyword, GIPHY_KEY);
     },
+    seeMore: function () {
+        displaySearchGrid(gifoSearchArray, numGifSearch/2, numGifSearch);
+        document.querySelector('#see-more').remove();
+    },
 
     // KEYPRESS EVENTS
     searchGifoSubmitKeypress: function () {
@@ -115,8 +128,8 @@ myApp.EventHandlers = {
                 var keycode = e.code;
                 if (keycode == "Enter") {
                     let keyword = document.querySelector("#search").value;
-                    gifoSearch(keyword, GIPHY_KEY);
-                    console.log('Yendo a buscar gifo: ' + keyword);
+                    gifArrayGlobal = gifoSearch(keyword, GIPHY_KEY);
+                    console.log('gifArrayGlobal: ' + gifArrayGlobal);
                 } else {
                     //Funcion gifo sugerencias
                     console.log('Sugerencias...');
