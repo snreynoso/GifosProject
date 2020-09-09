@@ -284,6 +284,7 @@ body.dark .sec-search__block__search-box a > .icon-search-noc {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .sec-search-display__line-top-result {
@@ -326,7 +327,7 @@ body.dark .sec-search-display__title-result {
 
 .sec-search-display__see-more {
   position: relative;
-  margin: 4.9rem 0;
+  margin: 4.9rem 0 2.9rem;
   width: 8rem;
   height: 3.14rem;
   border: 0.06rem solid #572ee5;
@@ -360,6 +361,7 @@ body.dark .sec-search-display__see-more:hover {
 .sec-trending {
   position: relative;
   height: 40rem;
+  background-color: #F3F5F8;
 }
 
 body.dark .sec-trending {
