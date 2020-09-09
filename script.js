@@ -54,18 +54,17 @@ function displaySearch(gifsPromise, keyword) {
             <h2 class="sec-search-display__title-result">${keyword}</h2>
         <div id="gifo-grid" class="sec-search-display__grid"></div>`;
 
-    displaySearchGrid(gifoSearchArray, 0, numGifSearch / 2);
+    displaySearchGrid(gifoSearchArray, 0, numGifSearch / 2); // Show the rest of gifs (from #1 to #12)
 
     gifosElement.innerHTML +=
         `<div>
             <p id="see-more" onclick="myApp.EventHandlers.seeMore()" class="sec-search-display__see-more">VER MAS</p>
         </div>`;
-    cont = 0;
 }
 
 // TRENDING FUNCTIONS
 async function gifoTrending(GIPHY_KEY) {
-     let url = `http://api.giphy.com/v1/gifs/trending?&api_key=${GIPHY_KEY}&limit=3`;
+    let url = `http://api.giphy.com/v1/gifs/trending?&api_key=${GIPHY_KEY}&limit=3`;
 
     let response = await fetch(url);
     let gifsPromise = await response.json();
@@ -106,7 +105,7 @@ function displayTrending(gifsPromise){
     cont = 0;
 }
 
-// MAIN APP FUNCTIONS
+// MAIN APP FUNCTION
 myApp.EventHandlers = {
     // CLICK EVENTS
     changeModeDark: function () {
@@ -117,13 +116,12 @@ myApp.EventHandlers = {
     },
     searchGifoSubmitClick: function () {
         let keyword = document.querySelector("#search").value;
-        //gifoSearch(keyword, GIPHY_KEY);
         gifoSearch(keyword, GIPHY_KEY)
             .then(gifsPromise => displaySearch(gifsPromise, keyword))
             .catch(err => console.log('Error gifs search promise: ' + err));
     },
     seeMore: function () {
-        displaySearchGrid(gifoSearchArray, numGifSearch / 2, numGifSearch);
+        displaySearchGrid(gifoSearchArray, numGifSearch / 2, numGifSearch); // Show the rest of gifs (from #13 to #24)
         document.querySelector('#see-more').remove();
     },
 
@@ -134,11 +132,9 @@ myApp.EventHandlers = {
                 var keycode = e.code;
                 if (keycode == "Enter") {
                     let keyword = document.querySelector("#search").value;
-                    //gifArrayGlobal = gifoSearch(keyword, GIPHY_KEY);
                     gifoSearch(keyword, GIPHY_KEY)
                         .then(gifsPromise => displaySearch(gifsPromise, keyword))
                         .catch(err => console.log('Error gifs search promise: ' + err));
-                    //console.log('gifArrayGlobal: ' + gifArrayGlobal);
                 } else {
                     //Funcion gifo sugerencias
                     console.log('Sugerencias...');
