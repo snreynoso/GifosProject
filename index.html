@@ -51,20 +51,24 @@
                 <img src="/src/assets/ilustra_header.svg" alt="imagen sobre buscador">
             </div>
 
-            <div class="sec-search__block__search-box">
-                <input onclick="myApp.EventHandlers.cleanSearch()" id="search" type="search" value="Busca GIFOS y más">
-                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search" class="icon-search"
-                        src="/src/assets/icon-search.svg" alt="icon search"></a>
-                <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc"
-                        class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg"
-                        alt="icon search dark mode"></a>
+
+            <div  class="sec-search__block__search-box">
+                <form id="append-list" autocomplete="off" action="/action_page.php">
+                    <input id="myInput" type="text" name="myCuontry" placeholder="Busca GIFOS y más"
+                            onclick="myApp.EventHandlers.cleanSearch()">
+                    <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search" class="icon-search"
+                            src="/src/assets/icon-search.svg" alt="icon search"></a>
+                    <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc"
+                            class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg"
+                            alt="icon search dark mode"></a>
+                </form>
             </div>
         </div>
 
         <div class="sec-search__trending">
             <h2>Trending:</h2>
             <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3>
-        </div>        
+        </div>
     </section>
 
     <div id="gifos" class="sec-search-display"></div>

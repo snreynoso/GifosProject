@@ -199,55 +199,92 @@ body {
     &__search-box {
       position: relative;
       width: 34.44rem;
-      height: 3.13rem;
+      min-height: 3.13rem;
       border: 0.06rem solid $color_violet;
       border-radius: 1.69rem;
+      padding: 0.94rem;
+      background: $color_white;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
 
+      @include Roboto_Gray;
+      font-size: 1rem;
+      font-weight: $font_weight_regular;
+      line-height: 1.19rem;
+      color: $color_black;
+      text-align: left;
+
       body.dark & {
         border-color: $color_white;
+        background: $color_darkGrey;
       }
 
-      input {
-        border: 0;
-        width: 28rem;
-        height: 1.38rem;
+      form {
         position: relative;
-        left: 3.38rem;
-        background: transparent;
-        outline: none; //Delete the black line adding by Chrome
+        left: 2.44rem;
 
-        @include Roboto_Gray;
-        font-size: 1rem;
-        font-weight: $font_weight_regular;
-        line-height: 1.19rem;
+        
+        input {
+          border: 0;
+          width: 28rem;
+          height: 1.38rem;
+          background: transparent;
+          outline: none; //Delete the black line adding by Chrome
 
-        text-align: left;
-      }
-
-      a > img {
-        cursor: pointer;
-        position: absolute;
-        right: 1rem;
-        top: 0.8rem;
-
-        body.dark & {
-          visibility: hidden;
+          body.dark & {
+            color: $color_white;
+          }
         }
-      }
 
-      a > .icon-search-noc {
-        cursor: pointer;
-        position: absolute;
-        right: 1rem;
-        top: 0.8rem;
-        visibility: hidden;
+        .autocomplete-items {
+          position: relative;
+          border-top: 0.19rem solid $color_grey;
+          z-index: 99;
+          @include Roboto_Gray;
 
-        body.dark & {
-          visibility: visible;
+          body.dark & {
+            color:$color_lightGrey;
+          }
+        }
+
+        .autocomplete-items div {
+          padding: 0.45rem 0;
+        }
+
+        .autocomplete-items div:hover {
+          /*when hovering an item:*/
+          background-color: $color_lightGrey;
+          color: $color_black;
+        }
+        .autocomplete-active {
+          /*when navigating through the items using the arrow keys:*/
+          background-color: $color_lightGrey !important;
+          color: $color_black !important;
+        }
+
+        a > img {
+          cursor: pointer;
+          position: absolute;
+          //right: 1rem;
+          //top: 0.8rem;
+
+          body.dark & {
+            visibility: hidden;
+          }
+        }
+
+        a > .icon-search-noc {
+          cursor: pointer;
+          position: absolute;
+          //right: 1rem;
+          //top: 0.8rem;
+          visibility: hidden;
+
+          body.dark & {
+            visibility: visible;
+          }
         }
       }
     }
@@ -257,6 +294,7 @@ body {
     position: absolute;
     height: 3.56rem;
     top: 32.06rem;
+    z-index: -10;
 
     display: flex;
     flex-direction: column;
@@ -316,7 +354,7 @@ body {
     }
   }
 
-  &__title-result::first-letter{
+  &__title-result::first-letter {
     text-transform: capitalize;
   }
 
@@ -364,6 +402,7 @@ body {
     }
   }
 }
+
 // ----------------------------- SECTION TRENDING ------------------------------- //
 .sec-trending {
   position: relative;
@@ -504,7 +543,7 @@ body {
 .gifo-card {
   position: relative;
   background-color: $color_violet;
-  
+
   &__gif {
     opacity: 1;
     //transition: 0.1s ease;
@@ -529,7 +568,7 @@ body {
     text-transform: lowercase;
   }
 
-  &__user::first-letter{
+  &__user::first-letter {
     text-transform: capitalize;
   }
 
@@ -545,7 +584,7 @@ body {
     text-transform: lowercase;
   }
 
-  &__title::first-letter{
+  &__title::first-letter {
     text-transform: capitalize;
   }
 
