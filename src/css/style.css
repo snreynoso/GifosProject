@@ -232,6 +232,15 @@ body.dark .sec-search__block__search-box {
   height: 1.38rem;
   background: transparent;
   outline: none;
+  font-family: "Roboto", sans-serif;
+  color: #9cafc3;
+  letter-spacing: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.19rem;
+  color: #000000;
+  text-align: left;
+  text-transform: capitalize;
 }
 
 body.dark .sec-search__block__search-box form input {
@@ -242,9 +251,11 @@ body.dark .sec-search__block__search-box form input {
   position: relative;
   border-top: 0.19rem solid #9cafc3;
   z-index: 99;
+  padding-top: 0.5rem;
   font-family: "Roboto", sans-serif;
   color: #9cafc3;
   letter-spacing: 0;
+  text-transform: capitalize;
 }
 
 body.dark .sec-search__block__search-box form .autocomplete-items {
@@ -604,6 +615,19 @@ body.dark .sec-trending__icon-arrow-right:hover {
 .gifo-card__icons-group .icon-like:hover {
   cursor: pointer;
   background: url(/src/assets/icon-fav-hover.svg);
+}
+
+.gifo-card__icons-group .icon-like__active {
+  background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+}
+
+.gifo-card__icons-group .icon-like__active:hover {
+  cursor: pointer;
+  background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav-hover.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
 }
 
 .gifo-card__icons-group .icon-download {

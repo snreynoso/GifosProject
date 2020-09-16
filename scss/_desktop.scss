@@ -225,13 +225,20 @@ body {
         position: relative;
         left: 2.44rem;
 
-        
         input {
           border: 0;
           width: 28rem;
           height: 1.38rem;
           background: transparent;
           outline: none; //Delete the black line adding by Chrome
+
+          @include Roboto_Gray;
+          font-size: 1rem;
+          font-weight: $font_weight_regular;
+          line-height: 1.19rem;
+          color: $color_black;
+          text-align: left;
+          text-transform: capitalize;
 
           body.dark & {
             color: $color_white;
@@ -242,10 +249,12 @@ body {
           position: relative;
           border-top: 0.19rem solid $color_grey;
           z-index: 99;
+          padding-top: 0.5rem;
           @include Roboto_Gray;
+          text-transform: capitalize;
 
           body.dark & {
-            color:$color_lightGrey;
+            color: $color_lightGrey;
           }
         }
 
@@ -604,12 +613,25 @@ body {
     }
 
     .icon-like {
-      background: url(/src/assets/icon-fav.svg);
+      background: url(/src/assets/icon-fav.svg);     
     }
 
     .icon-like:hover {
       cursor: pointer;
       background: url(/src/assets/icon-fav-hover.svg);
+    }
+
+    .icon-like__active {
+      background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav.svg);
+      background-repeat: no-repeat, no-repeat;
+      background-position: center, center; 
+    }
+
+    .icon-like__active:hover {
+      cursor: pointer;
+      background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav-hover.svg);
+      background-repeat: no-repeat, no-repeat;
+      background-position: center, center; 
     }
 
     .icon-download {

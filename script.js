@@ -3,6 +3,15 @@ var gifoSearchArray = [];
 var numGifSearch = 24;
 var numGifSuggest = 4;
 
+let favoritesIdArray = [];
+
+let favorites = localStorage.getItem('favorites');
+
+if (favorites != null) {
+    favoritesIdArray = JSON.parse(favorites);
+    console.log(favoritesIdArray);
+}
+
 const GIPHY_KEY = '2256WmPycPBqyzJaDx6Gzx0IoZspB7Ml';
 
 // SEARCH FUNCTIONS
@@ -32,13 +41,23 @@ function displaySearchGrid(gifArray, init, finish) {
                     <h2 class="gifo-card__user"> ${gifoUser} </h2>
                     <h2 class="gifo-card__title"> ${gifoTitle} </h2>
                     <div class="gifo-card__icons-group">
-                        <div class="icon-like"></div>
+                        <div id="${gifArray[i].id}" class="icon-like" onclick="myApp.EventHandlers.addRemoveFavorite(this.id)"></div>
                         <div class="icon-download"></div>
                         <div class="icon-max"></div>
                     </div>
                 </div>
             </div>`;
+
+        if (favoritesIdArray.indexOf(gifArray[i].id) != -1) {
+            let icon = document.getElementById(gifArray[i].id);
+            icon.classList.replace('icon-like', 'icon-like__active');
+        }
     }
+
+    //favoritesIdArray.forEach(element => {
+    //    let icon = document.getElementById(element);
+    //    icon.classList.replace('icon-like', 'icon-like__active');
+    //});
 }
 
 function displaySearch(gifsPromise, keyword) {
@@ -91,17 +110,29 @@ function displayTrending(gifsPromise) {
                             <h2 class="gifo-card__user"> ${gifoUser} </h2>
                             <h2 class="gifo-card__title"> ${gifoTitle} </h2>
                             <div class="gifo-card__icons-group">
-                                <div class="icon-like"></div>
+                                <div id="${element.id}" class="icon-like" onclick="myApp.EventHandlers.addRemoveFavorite(this.id)"></div>
                                 <div class="icon-download"></div>
                                 <div class="icon-max"></div>
                             </div>
                         </div>
                     </div>`;
+
+        if (favoritesIdArray.indexOf(element.id) != -1) {
+            let icon = document.getElementById(element.id);
+            icon.classList.replace('icon-like', 'icon-like__active');
+        }
     });
 
     let parent = document.querySelector('#arrow-left');
     parent.after(gifHTML);
     cont = 0;
+
+    //console.log(favoritesIdArray);
+
+    //favoritesIdArray.forEach(element => {
+    //    let icon = document.getElementById(element);
+    //    icon.classList.replace('icon-like', 'icon-like__active');
+    //});
 }
 
 async function gifoSuggest(keycode) {
@@ -121,7 +152,7 @@ function autocomplete() { // From w3school example adapted to my web page
     inp.addEventListener("input", function (e) {
         var a, b, i, val = this.value;
         let arr = [];
-        
+
         gifoSuggest(val)
             .then(suggestedWords => {
 
@@ -142,7 +173,7 @@ function autocomplete() { // From w3school example adapted to my web page
                 /*append the DIV element as a child of the autocomplete container:*/
                 //this.parentNode.appendChild(a);
                 document.querySelector('#append-list').appendChild(a);
-                
+
                 /*for each item in the array...*/
                 for (i = 0; i < arr.length; i++) {
                     /*check if the item starts with the same letters as the text field value:*/
@@ -193,9 +224,9 @@ function autocomplete() { // From w3school example adapted to my web page
             }
 
             let keyword = document.querySelector("#myInput").value;
-                gifoSearch(keyword)
-                    .then(gifsPromise => displaySearch(gifsPromise, keyword))
-                    .catch(err => console.log('Error gifs search promise: ' + err));
+            gifoSearch(keyword)
+                .then(gifsPromise => displaySearch(gifsPromise, keyword))
+                .catch(err => console.log('Error gifs search promise: ' + err));
         }
     });
     function addActive(x) {
@@ -249,36 +280,20 @@ myApp.EventHandlers = {
         displaySearchGrid(gifoSearchArray, numGifSearch / 2, numGifSearch); // Show the rest of gifs (from #13 to #24)
         document.querySelector('#see-more').remove();
     },
+    addRemoveFavorite: function (elementId) {
+        let icon = document.getElementById(elementId);
+        let indexId = favoritesIdArray.indexOf(elementId);
 
-    // KEYPRESS EVENTS
-    // searchGifoSubmitKeypress: function () {
-    //     let inputSearch = document.querySelector("#search");
-
-    //     inputSearch.addEventListener("keypress", function (e) {
-    //         var keycode = e.key;
-
-    //         if (keycode == "Enter") { // Search with the keyword typed
-    //             let keyword = document.querySelector("#search").value;
-    //             gifoSearch(keyword)
-    //                 .then(gifsPromise => displaySearch(gifsPromise, keyword))
-    //                 .catch(err => console.log('Error gifs search promise: ' + err));
-    //         } else { // Autocomplete the input text
-    //             let partialKeyword = inputSearch.value;
-    //             ///console.log(partialKeyword);
-    //             gifoSuggest(partialKeyword)
-    //                 .then(suggestedWords => {
-    //                     let gifoSuggestedArray = [];
-    //                     for (let i = 0; i < suggestedWords.data.length; i++) {
-    //                         gifoSuggestedArray[i] = suggestedWords.data[i].name;
-    //                     }
-    //                     //console.log(gifoSuggestedArray);
-    //                     // Usar values para obtener los valores de name
-    //                     autocomplete(inputSearch, gifoSuggestedArray, keycode);
-    //                 });
-    //             autocomplete(inputSearch, gifoSuggestedArray, keycode);
-    //         }
-    //     });
-    //},
+        if (indexId != -1) {
+            favoritesIdArray.splice(indexId, 1);
+            localStorage.setItem('favorites', JSON.stringify(favoritesIdArray));
+            icon.classList.replace('icon-like__active', 'icon-like');
+        } else {
+            favoritesIdArray.push(elementId);
+            localStorage.setItem('favorites', JSON.stringify(favoritesIdArray));
+            icon.classList.replace('icon-like', 'icon-like__active');
+        }
+    }
 };
 
 //myApp.EventHandlers.searchGifoSubmitKeypress();
@@ -290,3 +305,5 @@ autocomplete();
 gifoTrending()
     .then(gifsPromise => displayTrending(gifsPromise))
     .catch(err => console.log('Error gifs trending promise: ' + err));
+
+
