@@ -9,7 +9,6 @@ body {
   padding: 0;
   margin: auto;
   background: #ffffff;
-  transition: 0.3s ease all;
 }
 
 body.dark {
@@ -23,12 +22,23 @@ body.dark h3 {
 }
 
 .header {
-  position: relative;
+  position: fixed;
   padding: 0 9.75rem;
   height: 5.63rem;
   border-top: 0.31rem solid #572ee5;
+  box-shadow: 0 0 0.31rem #9cafc3;
+  width: 90rem;
+  margin: auto;
+  background: #ffffff;
+  z-index: 100;
   display: flex;
   align-items: center;
+}
+
+body.dark .header {
+  box-shadow: 0 0 0.31rem #000000;
+  background: #37383C;
+  border-top: 0.32rem solid #000000;
 }
 
 .header__logo-img {
@@ -108,6 +118,10 @@ body.dark .header__icon-new-gif {
   border-color: #ffffff;
 }
 
+.header__icon-new-gif a {
+  text-decoration: none;
+}
+
 .header__icon-new-gif a > h1 {
   margin: 0;
   color: #572ee5;
@@ -154,6 +168,7 @@ body.dark .header__icon-new-gif:active a > h1 {
 .sec-search {
   position: relative;
   height: 41.56rem;
+  top: 5.63rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -233,12 +248,11 @@ body.dark .sec-search__block__search-box {
   background: transparent;
   outline: none;
   font-family: "Roboto", sans-serif;
-  color: #9cafc3;
+  color: #000000;
   letter-spacing: 0;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.19rem;
-  color: #000000;
   text-align: left;
   text-transform: capitalize;
 }
@@ -252,10 +266,12 @@ body.dark .sec-search__block__search-box form input {
   border-top: 0.19rem solid #9cafc3;
   z-index: 99;
   padding-top: 0.5rem;
+  margin-top: 1rem;
   font-family: "Roboto", sans-serif;
   color: #9cafc3;
   letter-spacing: 0;
   text-transform: capitalize;
+  cursor: pointer;
 }
 
 body.dark .sec-search__block__search-box form .autocomplete-items {
@@ -340,6 +356,7 @@ body.dark .sec-search__block__search-box form a > .icon-search-noc {
   width: 21.13rem;
   height: 0.01rem;
   background-color: #9cafc3;
+  z-index: -10;
 }
 
 body.dark .sec-search-display__line-top-result {
@@ -410,10 +427,12 @@ body.dark .sec-search-display__see-more:hover {
   position: relative;
   height: 40rem;
   background-color: #F3F5F8;
+  box-shadow: 0 0 0.31rem #9cafc3;
 }
 
 body.dark .sec-trending {
   background-color: #222326;
+  box-shadow: 0 0 0.31rem #000000;
 }
 
 .sec-trending__title {
@@ -507,6 +526,10 @@ body.dark .sec-trending__icon-arrow-right:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+body.dark .footer {
+  border-bottom: 0.32rem solid #000000;
 }
 
 .footer__community {
@@ -666,5 +689,109 @@ body.dark .sec-trending__icon-arrow-right:hover {
   position: relative;
   width: 22.3rem;
   height: 17.2rem;
+}
+
+.card-expand {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(128, 128, 128, 0.384);
+  z-index: 120;
+}
+
+.card-expand__container {
+  position: relative;
+  transform: translateX(-50%) translateY(-50%);
+  left: 50%;
+  top: 50%;
+  opacity: 1;
+  width: 90rem;
+  height: 48rem;
+  background-color: #ffffff;
+}
+
+body.dark .card-expand__container {
+  background: #37383C;
+}
+
+.card-expand__container__close-icon {
+  position: absolute;
+  top: 4.15rem;
+  right: 17.4rem;
+  cursor: pointer;
+}
+
+body.dark .card-expand__container__close-icon {
+  content: url("/src/assets/close-modo-noct.svg");
+}
+
+.card-expand__container__arrow-left {
+  position: absolute;
+  left: 18rem;
+  top: 20rem;
+}
+
+.card-expand__container__gif {
+  position: absolute;
+  top: 10rem;
+  transform: translateX(-50%);
+  left: 50%;
+  min-width: 35rem;
+  max-height: 24rem;
+  object-fit: cover;
+}
+
+.card-expand__container__arrow-right {
+  position: absolute;
+  right: 18rem;
+  top: 20rem;
+}
+
+.card-expand__container__exp-pos {
+  position: absolute;
+  top: 36rem;
+  left: 57rem;
+  width: 5rem;
+}
+
+.card-expand__container__exp-pos .exp-like,
+.card-expand__container__exp-pos .exp-dwld {
+  border: 0.06rem solid #572ee5;
+}
+
+body.dark .card-expand__container__exp-pos .exp-like, body.dark
+.card-expand__container__exp-pos .exp-dwld {
+  border: none;
+}
+
+.card-expand__container__user, .card-expand__container__title {
+  font-family: "Roboto", sans-serif;
+  color: #000000;
+  line-height: 1.13rem;
+}
+
+.card-expand__container__user {
+  position: absolute;
+  top: 36rem;
+  left: 24rem;
+  font-size: 0.96rem;
+  font-weight: 400;
+}
+
+.card-expand__container__title {
+  position: absolute;
+  top: 37.5rem;
+  left: 24rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.not-found {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #5ed7c6;
 }
 /*# sourceMappingURL=style.css.map */

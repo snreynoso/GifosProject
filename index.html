@@ -29,12 +29,12 @@
         <nav class="header__nav" id="header__nav">
             <a class="header__nav__item" id="darkSelector" onclick="myApp.EventHandlers.changeModeDark()">MODO
                 NOCTURNO</a>
-            <a class="header__nav__item">FAVORITOS</a>
-            <a class="header__nav__item">MIS GIFOS</a>
+            <a class="header__nav__item" onclick="myApp.EventHandlers.goFavorites()">FAVORITOS</a>
+            <a class="header__nav__item" onclick="myApp.EventHandlers.goMyGifos()">MIS GIFOS</a>
         </nav>
 
         <div class="header__icon-new-gif" id="header__icon-new-gif">
-            <a>
+            <a href="create_gif.html">
                 <h1 id="header__icon-plus">+</h1>
             </a>
         </div>
@@ -50,7 +50,6 @@
             <div class="sec-search__block__block-img">
                 <img src="/src/assets/ilustra_header.svg" alt="imagen sobre buscador">
             </div>
-
 
             <div  class="sec-search__block__search-box">
                 <form id="append-list" autocomplete="off" action="/action_page.php">
@@ -81,13 +80,13 @@
         </div>
 
         <div class="sec-trending__gifs">
-            <div id="arrow-left" class="sec-trending__icon-arrow-left"></div>
+            <div id="arrow-left" class="sec-trending__icon-arrow-left" onclick="myApp.EventHandlers.leftArrow()"></div>
 
             <div id="gifo-trendig-1" class="gifo-card card-trending"></div>
             <div id="gifo-trendig-2" class="gifo-card card-trending"></div>
             <div id="gifo-trendig-3" class="gifo-card card-trending"></div>
 
-            <div class="sec-trending__icon-arrow-right"></div>
+            <div class="sec-trending__icon-arrow-right" onclick="myApp.EventHandlers.rightArrow()"></div>
         </div>
     </section>
 
