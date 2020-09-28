@@ -33,63 +33,65 @@
             <a class="header__nav__item" onclick="myApp.EventHandlers.goMyGifos()">MIS GIFOS</a>
         </nav>
 
-        <div class="header__icon-new-gif" id="header__icon-new-gif">
-            <a href="create_gif.html">
+        <div class="header__icon-new-gif" id="header__icon-new-gif" onclick="myApp.EventHandlers.createGif()">
+            <a>
                 <h1 id="header__icon-plus">+</h1>
             </a>
         </div>
     </header>
 
     <!-- >>>>>>>>>>>>>>>>>> SEARCH SECTION <<<<<<<<<<<<<<<<<<<<< -->
-    <section id="gifo-sec-search" class="sec-search">
-        <div class="sec-search__title">
-            <h2>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h2>
-        </div>
-
-        <div class="sec-search__block">
-            <div class="sec-search__block__block-img">
-                <img src="/src/assets/ilustra_header.svg" alt="imagen sobre buscador">
+    <main id="main">
+        <section id="gifo-sec-search" class="sec-search">
+            <div class="sec-search__title">
+                <h2>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span></h2>
             </div>
 
-            <div  class="sec-search__block__search-box">
-                <form id="append-list" autocomplete="off" action="/action_page.php">
-                    <input id="myInput" type="text" name="myCuontry" placeholder="Busca GIFOS y más"
+            <div class="sec-search__block">
+                <div class="sec-search__block__block-img">
+                    <img src="/src/assets/ilustra_header.svg" alt="imagen sobre buscador">
+                </div>
+
+                <div class="sec-search__block__search-box">
+                    <form id="append-list" autocomplete="off" action="/action_page.php">
+                        <input id="myInput" type="text" name="myCuontry" placeholder="Busca GIFOS y más"
                             onclick="myApp.EventHandlers.cleanSearch()">
-                    <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search" class="icon-search"
-                            src="/src/assets/icon-search.svg" alt="icon search"></a>
-                    <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc"
-                            class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg"
-                            alt="icon search dark mode"></a>
-                </form>
+                        <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search"
+                                class="icon-search" src="/src/assets/icon-search.svg" alt="icon search"></a>
+                        <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc"
+                                class="icon-search-noc" src="/src/assets/icon-search-mod-noc.svg"
+                                alt="icon search dark mode"></a>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <div class="sec-search__trending">
-            <h2>Trending:</h2>
-            <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3>
-        </div>
-    </section>
+            <div class="sec-search__trending">
+                <h2>Trending:</h2>
+                <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3>
+            </div>
+        </section>
 
-    <div id="gifos" class="sec-search-display"></div>
+        <div id="gifos" class="sec-search-display"></div>
 
-    <!-- >>>>>>>>>>>>>>>>> TRENDING SECTION <<<<<<<<<<<<<<<<<< -->
-    <section class="sec-trending" id="sec-trending">
-        <div class="sec-trending__title">
-            <h2>Trending GIFOS</h2>
-            <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
-        </div>
+        <!-- >>>>>>>>>>>>>>>>> TRENDING SECTION <<<<<<<<<<<<<<<<<< -->
+        <section class="sec-trending" id="sec-trending">
+            <div class="sec-trending__title">
+                <h2>Trending GIFOS</h2>
+                <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+            </div>
 
-        <div class="sec-trending__gifs">
-            <div id="arrow-left" class="sec-trending__icon-arrow-left" onclick="myApp.EventHandlers.leftArrow()"></div>
+            <div class="sec-trending__gifs">
+                <div id="arrow-left" class="sec-trending__icon-arrow-left" onclick="myApp.EventHandlers.leftArrow()">
+                </div>
 
-            <div id="gifo-trendig-1" class="gifo-card card-trending"></div>
-            <div id="gifo-trendig-2" class="gifo-card card-trending"></div>
-            <div id="gifo-trendig-3" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-1" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-2" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-3" class="gifo-card card-trending"></div>
 
-            <div class="sec-trending__icon-arrow-right" onclick="myApp.EventHandlers.rightArrow()"></div>
-        </div>
-    </section>
-
+                <div class="sec-trending__icon-arrow-right" onclick="myApp.EventHandlers.rightArrow()"></div>
+            </div>
+        </section>
+    </main>
     <!-- >>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<< -->
     <footer class="footer">
         <div class="footer__community">
@@ -105,6 +107,7 @@
     </footer>
 
     <script defer src="script.js"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@
 }
 
 body {
+	position: relative;
 	width: 90rem;
 	padding: 0;
 	margin: auto;
@@ -24,7 +25,8 @@ body {
 
 // ---------------------------------- HEADER ---------------------------------- //
 .header {
-	position: fixed;
+	position: sticky;
+	top: 0;
 	padding: 0 9.75rem;
 	height: 5.63rem;
 
@@ -32,7 +34,6 @@ body {
 	box-shadow: 0 0 0.31rem $color_grey;
 
 	width: 90rem;
-	margin: auto;
 	background: $color_white;
 	z-index: 100;
 
@@ -173,8 +174,9 @@ body {
 // ----------------------------- SECTION SEARCH ------------------------------- //
 .sec-search {
 	position: relative;
-	height: 41.56rem;
-	top: 5.63rem;
+	top: 1rem;
+	min-height: 41.56rem;
+	height: auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -753,8 +755,8 @@ body {
 			top: 10rem;
 			transform: translateX(-50%);
 			left: 50%;
-			min-width: 35rem;
-			max-height: 24rem;
+			max-width: 35rem;
+			height: 25rem;
 			object-fit: cover;
 		}
 
@@ -809,4 +811,263 @@ body {
 	font-size: 1.38rem;
 	font-weight: $font_weight_bold;
 	color: $color_lightGreen;
+}
+
+.sec-favorites {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	font-family: $font_Montserrat;
+	font-size: 1.56rem;
+	font-weight: $font_weight_bold;
+	color: $color_violet;
+	line-height: 1.88rem;
+
+	body.dark & {
+		color: $color_white;;
+	}
+
+	h2 {
+		display: block;
+		padding: 0.5rem 0 2.25rem 0;
+	}
+
+	.favorites-grid {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		width: 70.4rem;
+	}
+}
+
+.empty-fav-icon {
+	position: relative;
+	padding: 5rem 0;
+}
+.empty-fav-text {
+	position: relative;
+	padding: 2rem 0;
+	width: 27rem;
+	text-align: center;
+
+	font-family: $font_Montserrat;
+	font-size: 1.38rem;
+	font-weight: $font_weight_bold;
+	color: $color_lightGreen;
+	line-height: 2.06rem;
+}
+
+.create-gif {
+	position: relative;
+
+	&__camara {
+		position: absolute;
+		left: 9.75rem;
+		top: 7.38rem;
+		display: flex;
+		flex-direction: row;
+
+		body.dark & {
+			content: url('/src/assets/camara-modo-noc.svg');
+		}
+	}
+
+	&__center {
+		position: relative;
+		width: 49.74rem;
+		height: 35.75rem;
+		transform: translateX(-50%);
+		left: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+
+		&__frame {
+			position: relative;
+			margin-top: 0.25rem;
+			width: 43rem;
+			height: 24.38rem;
+			border: 0.06rem solid $color_violet;
+
+			body.dark & {
+				border-color: $color_white;
+			}
+
+			video {
+				position: relative;
+				height: 85%;
+				transform: translate(-50%, -50%);
+				left: 50%;
+				top: 50%;
+			}
+
+			&-title,
+			p {
+				position: relative;
+				top: 8.38rem;
+				text-align: center;
+				transform: translateX(-50%);
+				left: 50%;
+
+				body.dark & {
+					color: $color_white;
+				}
+			}
+
+			&-title {
+				font-family: $font_Montserrat;
+				font-size: 1.56rem;
+				font-weight: $font_weight_bold;
+				color: $color_violet;
+				line-height: 2.19rem;
+
+				span {
+					color: $color_lightGreen;
+				}
+			}
+
+			p {
+				font-family: $font_Roboto;
+				font-size: 1rem;
+				font-weight: $font_weight_regular;
+				color: $color_black;
+				line-height: 1.81rem;
+			}
+
+			.corner {
+				width: 1.69rem;
+				height: 1.56rem;
+			}
+
+			.c1 {
+				position: absolute;
+				top: 1.25rem;
+				left: 1.25rem;
+				border-top: 0.06rem solid $color_lightGreen;
+				border-left: 0.06rem solid $color_lightGreen;
+			}
+			.c2 {
+				position: absolute;
+				top: 1.25rem;
+				right: 1.25rem;
+				border-top: 0.06rem solid $color_lightGreen;
+				border-right: 0.06rem solid $color_lightGreen;
+			}
+			.c3 {
+				position: absolute;
+				bottom: 1.25rem;
+				left: 1.25rem;
+				border-bottom: 0.06rem solid $color_lightGreen;
+				border-left: 0.06rem solid $color_lightGreen;
+			}
+			.c4 {
+				position: absolute;
+				bottom: 1.25rem;
+				right: 1.25rem;
+				border-bottom: 0.06rem solid $color_lightGreen;
+				border-right: 0.06rem solid $color_lightGreen;
+			}
+		}
+
+		&__pag {
+			position: relative;
+			width: 9.3rem;
+			padding: 1.5rem 0 1.19rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+
+			.pag {
+				position: relative;
+				padding-top: 0.35rem;
+				width: 2rem;
+				height: 2rem;
+				border: 0.06rem solid $color_violet;
+				border-radius: 1rem;
+				text-align: center;
+
+				font-family: $font_Roboto;
+				font-size: 1.13rem;
+				font-weight: $font_weight_medium;
+				color: $color_violet;
+				line-height: 1.13rem;
+
+				body.dark & {
+					border-color: $color_white;
+					color: $color_white;
+				}
+			}
+
+			.pag-active {
+				background-color: $color_violet;
+				color: $color_white;
+
+				body.dark & {
+					background-color: $color_white;
+					color: $color_darkGrey;
+				}
+			}
+		}
+
+		&__line {
+			position: relative;
+			height: 0.43rem;
+			width: 100%;
+			background-color: $color_violet;
+			border-radius: 0.2rem;
+
+			body.dark & {
+				background-color: $color_white;
+			}
+		}
+
+		&__button {
+			position: relative;
+			height: 3.13rem;
+			width: 7.94rem;
+			margin: 1.26rem 0 1.63rem;
+			border: 0.06rem solid $color_violet;
+			border-radius: 1.616rem;
+			text-align: center;
+			padding: 1rem 0 1rem;
+
+			font-family: $font_Montserrat;
+			font-size: 0.81rem;
+			font-weight: $font_weight_bold;
+			color: $color_violet;
+			line-height: 1rem;
+
+			body.dark & {
+				background-color: $color_darkGrey;
+				color: $color_white;
+				border-color: $color_white;
+			}
+		}
+
+		&__button:hover {
+			background-color: $color_violet;
+			color: $color_white;
+			cursor: pointer;
+
+			body.dark & {
+				background-color: $color_white;
+				color: $color_darkGrey;
+				border-color: $color_white;
+			}
+		}
+	}
+
+	&__pelicula {
+		position: absolute;
+		top: 23.91rem;
+		right: 10.46rem;
+
+		body.dark & {
+			content: url('/src/assets/pelicula-modo-noc.svg');
+		}
+	}
 }

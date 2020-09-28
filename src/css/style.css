@@ -5,6 +5,7 @@
 }
 
 body {
+  position: relative;
   width: 90rem;
   padding: 0;
   margin: auto;
@@ -22,13 +23,13 @@ body.dark h3 {
 }
 
 .header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   padding: 0 9.75rem;
   height: 5.63rem;
   border-top: 0.31rem solid #572ee5;
   box-shadow: 0 0 0.31rem #9cafc3;
   width: 90rem;
-  margin: auto;
   background: #ffffff;
   z-index: 100;
   display: flex;
@@ -167,8 +168,9 @@ body.dark .header__icon-new-gif:active a > h1 {
 
 .sec-search {
   position: relative;
-  height: 41.56rem;
-  top: 5.63rem;
+  top: 1rem;
+  min-height: 41.56rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -738,8 +740,8 @@ body.dark .card-expand__container__close-icon {
   top: 10rem;
   transform: translateX(-50%);
   left: 50%;
-  min-width: 35rem;
-  max-height: 24rem;
+  max-width: 35rem;
+  height: 25rem;
   object-fit: cover;
 }
 
@@ -793,5 +795,264 @@ body.dark .card-expand__container__exp-pos .exp-like, body.dark
   font-size: 1.38rem;
   font-weight: 700;
   color: #5ed7c6;
+}
+
+.sec-favorites {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.56rem;
+  font-weight: 700;
+  color: #572ee5;
+  line-height: 1.88rem;
+}
+
+body.dark .sec-favorites {
+  color: #ffffff;
+}
+
+.sec-favorites h2 {
+  display: block;
+  padding: 0.5rem 0 2.25rem 0;
+}
+
+.sec-favorites .favorites-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 70.4rem;
+}
+
+.empty-fav-icon {
+  position: relative;
+  padding: 5rem 0;
+}
+
+.empty-fav-text {
+  position: relative;
+  padding: 2rem 0;
+  width: 27rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: #5ed7c6;
+  line-height: 2.06rem;
+}
+
+.create-gif {
+  position: relative;
+}
+
+.create-gif__camara {
+  position: absolute;
+  left: 9.75rem;
+  top: 7.38rem;
+  display: flex;
+  flex-direction: row;
+}
+
+body.dark .create-gif__camara {
+  content: url("/src/assets/camara-modo-noc.svg");
+}
+
+.create-gif__center {
+  position: relative;
+  width: 49.74rem;
+  height: 35.75rem;
+  transform: translateX(-50%);
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-gif__center__frame {
+  position: relative;
+  margin-top: 0.25rem;
+  width: 43rem;
+  height: 24.38rem;
+  border: 0.06rem solid #572ee5;
+}
+
+body.dark .create-gif__center__frame {
+  border-color: #ffffff;
+}
+
+.create-gif__center__frame video {
+  position: relative;
+  height: 85%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.create-gif__center__frame-title,
+.create-gif__center__frame p {
+  position: relative;
+  top: 8.38rem;
+  text-align: center;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+body.dark .create-gif__center__frame-title, body.dark
+.create-gif__center__frame p {
+  color: #ffffff;
+}
+
+.create-gif__center__frame-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.56rem;
+  font-weight: 700;
+  color: #572ee5;
+  line-height: 2.19rem;
+}
+
+.create-gif__center__frame-title span {
+  color: #5ed7c6;
+}
+
+.create-gif__center__frame p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.81rem;
+}
+
+.create-gif__center__frame .corner {
+  width: 1.69rem;
+  height: 1.56rem;
+}
+
+.create-gif__center__frame .c1 {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  border-top: 0.06rem solid #5ed7c6;
+  border-left: 0.06rem solid #5ed7c6;
+}
+
+.create-gif__center__frame .c2 {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  border-top: 0.06rem solid #5ed7c6;
+  border-right: 0.06rem solid #5ed7c6;
+}
+
+.create-gif__center__frame .c3 {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  border-bottom: 0.06rem solid #5ed7c6;
+  border-left: 0.06rem solid #5ed7c6;
+}
+
+.create-gif__center__frame .c4 {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  border-bottom: 0.06rem solid #5ed7c6;
+  border-right: 0.06rem solid #5ed7c6;
+}
+
+.create-gif__center__pag {
+  position: relative;
+  width: 9.3rem;
+  padding: 1.5rem 0 1.19rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.create-gif__center__pag .pag {
+  position: relative;
+  padding-top: 0.35rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0.06rem solid #572ee5;
+  border-radius: 1rem;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.13rem;
+  font-weight: 500;
+  color: #572ee5;
+  line-height: 1.13rem;
+}
+
+body.dark .create-gif__center__pag .pag {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.create-gif__center__pag .pag-active {
+  background-color: #572ee5;
+  color: #ffffff;
+}
+
+body.dark .create-gif__center__pag .pag-active {
+  background-color: #ffffff;
+  color: #37383C;
+}
+
+.create-gif__center__line {
+  position: relative;
+  height: 0.43rem;
+  width: 100%;
+  background-color: #572ee5;
+  border-radius: 0.2rem;
+}
+
+body.dark .create-gif__center__line {
+  background-color: #ffffff;
+}
+
+.create-gif__center__button {
+  position: relative;
+  height: 3.13rem;
+  width: 7.94rem;
+  margin: 1.26rem 0 1.63rem;
+  border: 0.06rem solid #572ee5;
+  border-radius: 1.616rem;
+  text-align: center;
+  padding: 1rem 0 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.81rem;
+  font-weight: 700;
+  color: #572ee5;
+  line-height: 1rem;
+}
+
+body.dark .create-gif__center__button {
+  background-color: #37383C;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.create-gif__center__button:hover {
+  background-color: #572ee5;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+body.dark .create-gif__center__button:hover {
+  background-color: #ffffff;
+  color: #37383C;
+  border-color: #ffffff;
+}
+
+.create-gif__pelicula {
+  position: absolute;
+  top: 23.91rem;
+  right: 10.46rem;
+}
+
+body.dark .create-gif__pelicula {
+  content: url("/src/assets/pelicula-modo-noc.svg");
 }
 /*# sourceMappingURL=style.css.map */

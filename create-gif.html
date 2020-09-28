@@ -14,8 +14,6 @@
         rel="stylesheet">
     <!-- ICONOS FONTAWESOME-->
     <script src="https://kit.fontawesome.com/b1d96e50a4.js" crossorigin="anonymous"></script>
-
-
 </head>
 
 <body>
@@ -29,17 +27,49 @@
         <nav class="header__nav" id="header__nav">
             <a class="header__nav__item" id="darkSelector" onclick="myApp.EventHandlers.changeModeDark()">MODO
                 NOCTURNO</a>
-            <a class="header__nav__item">FAVORITOS</a>
-            <a class="header__nav__item">MIS GIFOS</a>
+            <a class="header__nav__item" onclick="myApp.EventHandlers.goFavorites()">FAVORITOS</a>
+            <a class="header__nav__item" onclick="myApp.EventHandlers.goMyGifos()">MIS GIFOS</a>
         </nav>
 
         <div class="header__icon-new-gif" id="header__icon-new-gif">
-            <a>
+            <a href="create-gif.html">
                 <h1 id="header__icon-plus">+</h1>
             </a>
         </div>
     </header>
 
+    <!-- >>>>>>>>>>>>>>>>>> SEARCH SECTION <<<<<<<<<<<<<<<<<<<<< -->
+    <div class="create-gif">
+
+        <div class="create-gif__camara">
+            <img src="/src/assets/camara.svg" alt="camara de video">
+            <img src="/src/assets/element-luz-camara.svg" alt="">
+        </div>
+
+        <div class="create-gif__center">
+            <div class="create-gif__center__frame">
+                <h2 class="create-gif__center__frame-title"> Aquí podrás <br> crear tus propios <span>GIFOS</span></h2>
+                <p> ¡Crea tu GIFO en sólo 3 pasos! <br>
+                    (sólo necesitas una cámara para grabar un video)</p>
+                <div class="corner c1"></div>
+                <div class="corner c2"></div>
+                <div class="corner c3"></div>
+                <div class="corner c4"></div>
+           </div>
+           <div class="create-gif__center__pag">
+               <div class="pag">1</div>
+               <div class="pag">2</div>
+               <div class="pag">3</div>
+           </div>    
+           <div class="create-gif__center__line"></div>  
+           <div class="create-gif__center__button"> COMENZAR </div>    
+        </div>
+
+        
+        <div class="create-gif__pelicula">
+            <img src="/src/assets/pelicula.svg" alt="">
+        </div>
+    </div>
     <!-- >>>>>>>>>>>>>>>>>>>>> FOOTER <<<<<<<<<<<<<<<<<<<<<<<< -->
     <footer class="footer">
         <div class="footer__community">
@@ -54,7 +84,7 @@
         </div>
     </footer>
 
-    <script defer src="script.js"></script>
+    <script defer src="script-create-gif.js"></script>
 </body>
 
 </html>
