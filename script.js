@@ -4,6 +4,13 @@ const numGifSearch = 24;
 const numGifTrending = 12;
 const numGifSuggest = 4;
 const GIPHY_KEY = '2256WmPycPBqyzJaDx6Gzx0IoZspB7Ml';
+const key = '?api_key=2256WmPycPBqyzJaDx6Gzx0IoZspB7Ml';
+
+let urlUpload = `https://upload.giphy.com/v1/gifs?api_key=${GIPHY_KEY}`;
+let urlGetById = 'https://api.giphy.com/v1/gifs/';
+
+let myGifId;
+let myGifUrl;
 
 let initTrendingCard = 0;
 
@@ -11,6 +18,7 @@ let gifsSearchArray = [];
 let gifsTrendingArray = [];
 let favoritesIdArray = [];
 let gifsFavoriteArray = [];
+let myGifArray = [];
 
 //let mapOfFavGifs = new Map(); // This map contains the favorites Gifs Objets
 
@@ -302,6 +310,115 @@ function autocomplete() { // From w3school example adapted to my web page
     });
 }
 
+let form;
+
+function stop_recording() {
+    //let form;
+    let src;
+    let blob;
+
+    let video_container = document.querySelector('#video-element');
+    let frameContainer = document.querySelector('#frameContainer');
+    let imgElement = document.createElement('IMG');
+    imgElement.setAttribute('id', 'gifRec');
+    imgElement.classList.add('gifRec');
+
+    recorder.camera.stop();
+
+    blob = recorder.getBlob();
+    form = new FormData();
+    form.append("file", blob, 'test.gif');
+    // here is where upload happens
+
+    frameContainer.appendChild(imgElement);
+
+    src = URL.createObjectURL(blob);
+    imgElement.src = src;
+
+    recorder.destroy();
+    recorder = null;
+    video_container.srcObject = null;
+
+    is_recording = false;
+
+    clearInterval(interval);
+
+    let chrono = document.querySelector('#chronometer');
+    chrono.textContent = 'REPETIR CAPTURA';
+    chrono.setAttribute('id', 'repeat');
+    chrono.setAttribute('onclick', 'myApp.EventHandlers.repeatRecGif()');
+
+    let uploadButton = document.querySelector('#startButton');
+    uploadButton.textContent = 'SUBIR GIFO';
+    uploadButton.setAttribute('onclick', 'myApp.EventHandlers.uploadGif()');
+}
+
+let hours = `00`;
+let minutes = `00`;
+let seconds = `00`;
+let interval;
+
+function chronometer() {
+    chronometerDisplay = document.querySelector('#chronometer');
+    seconds++;
+    if (seconds < 10) seconds = `0` + seconds
+
+    if (seconds > 59) {
+        seconds = `00`;
+        minutes++;
+        if (minutes < 10) minutes = `0` + minutes
+    }
+    if (minutes > 59) {
+        minutes = `00`;
+        hours++;
+        if (hours < 10) hours = `0` + hours
+    }
+    chronometerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+function setMediaDevice() {
+    let title = document.querySelector('#title-rec-box');
+    let paragraph = document.querySelector('#paragraph-rec-box');
+    let video_container = document.querySelector('#video-element');
+    let pag_1 = document.querySelector('#pag-1');
+    let pag_2 = document.querySelector('#pag-2');
+    let button = document.querySelector('#startButton');
+
+    let cam_options = {
+        video: true,
+        audio: false
+    };
+
+    let recorder_options = {
+        type: "gif"
+    };
+
+    if (!navigator.mediaDevices.getUserMedia) {
+        throw new Error("No camera");
+    }
+
+    navigator.mediaDevices.getUserMedia(cam_options)
+        .then((response) => {
+            if (title != null) {
+                title.remove();
+                paragraph.remove();
+                pag_1.classList.remove('pag-active');
+                pag_2.classList.add('pag-active');
+            }
+            button.style.display = 'block';
+            button.innerHTML = 'GRABAR';
+            button.setAttribute('onclick', 'myApp.EventHandlers.startRecGif()');
+
+            camera = response;
+            video_container.srcObject = camera;
+            video_container.play();
+            recorder = RecordRTC(camera, recorder_options);
+        })
+        .catch(err => {
+            throw new Error(err);
+        });
+}
+
 // MAIN APP FUNCTION
 myApp.EventHandlers = {
     // CLICK EVENTS
@@ -515,8 +632,34 @@ myApp.EventHandlers = {
         if (document.querySelector('#gifos') != null) {
             document.querySelector('#gifos').remove();
         }
-
         let secSearch = document.querySelector('#gifo-sec-search');
+        if (secSearch === null) {
+            document.querySelector('.create-gif').remove();
+            document.querySelector('#main').innerHTML =
+                `<section id="gifo-sec-search" class="sec-search"></section>
+            <section class="sec-trending" id="sec-trending">
+            <div class="sec-trending__title">
+                <h2>Trending GIFOS</h2>
+                <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+            </div>
+
+            <div class="sec-trending__gifs">
+                <div id="arrow-left" class="sec-trending__icon-arrow-left" onclick="myApp.EventHandlers.leftArrow()">
+                </div>
+
+                <div id="gifo-trendig-1" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-2" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-3" class="gifo-card card-trending"></div>
+
+                <div class="sec-trending__icon-arrow-right" onclick="myApp.EventHandlers.rightArrow()"></div>
+            </div>
+            </section>`;
+            gifoTrendingFetch()
+                .then(gifsTrendingPromise => displayTrending(gifsTrendingPromise))
+                .catch(err => console.log('Error gifs trending promise: ' + err));
+            secSearch = document.querySelector('#gifo-sec-search');
+
+        }
         secSearch.innerHTML =
             `<div id="gifos" class="sec-favorites">
                 <img class="" src="/src/assets/icon-favoritos.svg" alt="search not found">
@@ -563,7 +706,7 @@ myApp.EventHandlers = {
         </div>
 
         <div id="create-gif-center" class="create-gif__center">
-            <div class="create-gif__center__frame">
+            <div id="frameContainer" class="create-gif__center__frame">
                 <h2 id="title-rec-box" class="create-gif__center__frame-title"> Aquí podrás <br> crear tus propios <span>GIFOS</span></h2>
                 <p id="paragraph-rec-box"> ¡Crea tu GIFO en sólo 3 pasos! <br>
                     (sólo necesitas una cámara para grabar un video)</p>
@@ -579,7 +722,7 @@ myApp.EventHandlers = {
                <div id="pag-3" class="pag">3</div>
            </div>    
            <div class="create-gif__center__line"></div>  
-           <div id="startButton" class="create-gif__center__button" onclick="myApp.EventHandlers.startRecGif()"> COMENZAR </div>    
+           <div id="startButton" class="create-gif__center__button" onclick="myApp.EventHandlers.displayCamera()"> COMENZAR </div>    
         </div>
   
         <div class="create-gif__pelicula">
@@ -587,90 +730,89 @@ myApp.EventHandlers = {
         </div>
     </div>`;
     },
-    startRecGif: function () {
-        let button = document.querySelector('#startButton')
+    displayCamera: function () {
+        let button = document.querySelector('#startButton');
         button.style.display = 'none';
 
-        let title = document.querySelector('#title-rec-box')
+        let title = document.querySelector('#title-rec-box');
         title.innerText =
             `¿Nos das acceso 
          a tu cámara?`;
-        let paragraph = document.querySelector('#paragraph-rec-box')
+        let paragraph = document.querySelector('#paragraph-rec-box');
         paragraph.innerText =
             `El acceso a tu camara será válido sólo
          por el tiempo en el que estés creando el GIFO.`;
 
         let pag_1 = document.querySelector('#pag-1');
-        let pag_2 = document.querySelector('#pag-2');
         pag_1.classList.add("pag-active");
 
-        let video_container = document.querySelector('#video-element');
-
-        let cam_options = {
-            video: true,
-            audio: false
-        };
-
-        let recorder_options = {
-            type: "gif"
-        };
-
-        if (!navigator.mediaDevices.getUserMedia) {
-            throw new Error("Acceso a la camera denegado");
-        }
-
-        navigator.mediaDevices.getUserMedia(cam_options)
-            .then((response) => {
-
-                title.remove();
-                paragraph.remove();
-                pag_1.classList.remove('pag-active');
-                pag_2.classList.add('pag-active');
-                button.style.display = 'block';
-                button.innerHTML = 'GRABAR';
-                button.setAttribute('onclick', '');
-
-                camera = response;
-                video_container.srcObject = camera;
-                video_container.play();
-                recorder = RecordRTC(camera, recorder_options);
-
-                button.addEventListener('click', (e) => {
-                    button.innerHTML = 'FINALIZAR';
-                    button.setAttribute('onclick', 'myApp.EventHandlers.stopRec()');
-                    recorder.startRecording();
-                    recorder.camera = camera;
-                    is_recording = true;
-                });
-
-            })
-            .catch(err => {
-                throw new Error(err);
-            });
-
-
+        setMediaDevice();
     },
-    stopRec: function () {
-        console.log('Goooooolazzzooooo');
-        let form;
-        let src;
-        let blob;
+    startRecGif: function () {
+        hours = `00`;
+        minutes = `00`;
+        seconds = `00`;
+        let frameContainer = document.querySelector('#create-gif-center');
+        let chronometerDisplay = document.createElement('DIV');
+        chronometerDisplay.setAttribute('id', 'chronometer');
+        frameContainer.appendChild(chronometerDisplay);
 
-        recorder.camera.stop();
+        interval = setInterval(chronometer, 1000);
+        chronometerDisplay.textContent = `${hours}:${minutes}:${seconds}`;
 
-        blob = recorder.getBlob();
-        form = new FormData();
-        form.append("file", blob, 'test.gif');
-        // here is where upload happens
+        recorder.startRecording();
+        recorder.camera = camera;
+        is_recording = true;
 
-        src = URL.createObjectURL(blob);
-        img_element.src = src;
+        let button = document.querySelector('#startButton');
+        button.setAttribute('onclick', 'recorder.stopRecording(stop_recording)');
+        button.innerHTML = 'FINALIZAR';
+    },
+    repeatRecGif: function () {
+        let imgMyGif = document.querySelector('#gifRec');
+        imgMyGif.remove();
 
-        recorder.destroy();
-        recorder = null;
-        video_container.srcObject = null;
+        document.querySelector('#repeat').remove();
 
-        is_recording = false;
+        setMediaDevice();
+    },
+    uploadGif: function () {
+        document.querySelector('#startButton').remove();
+        document.querySelector('#repeat').remove();
+
+        let pag_2 = document.querySelector('#pag-2');
+        let pag_3 = document.querySelector('#pag-3');
+        pag_2.classList.remove("pag-active");
+        pag_3.classList.add("pag-active");
+
+        let frameCont = document.querySelector('#frameContainer');
+
+        frameCont.innerHTML +=
+            `<div class="imgUpload"></div>
+            <img class="iconUpload iconRotate" src="/src/assets/loader.svg" alt="imagen cargando...">
+            <h1 class="textUpload"> Estamos subiendo tu GIFO </h1>`;
+
+        fetch(urlUpload, {
+            method: 'POST',
+            body: form
+        })
+            .then(res => res.json())
+            .then(data => {
+                myGifId = data.data.id;
+                //console.log(gifId);
+                fetch(urlGetById + myGifId + key)
+                    .then(res => res.json())
+                    .then(data => {
+                        myGifUrl = data.data.images.original.url;
+                        myGifArray.push(myGifUrl);
+                        //console.log(myGifArray);
+                        localStorage.setItem('myGif', JSON.stringify(myGifArray));
+                        
+                        document.querySelector('.iconUpload').setAttribute('src', '/src/assets/ok.svg');
+                        document.querySelector('.iconUpload').classList.remove('iconRotate');
+                        document.querySelector('.textUpload').textContent = 'GIFO subido con éxito';
+                    })
+            });
     }
 };
 

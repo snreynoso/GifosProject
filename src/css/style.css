@@ -845,6 +845,7 @@ body.dark .sec-favorites {
 
 .create-gif {
   position: relative;
+  opacity: 1;
 }
 
 .create-gif__camara {
@@ -876,6 +877,13 @@ body.dark .create-gif__camara {
   width: 43rem;
   height: 24.38rem;
   border: 0.06rem solid #572ee5;
+  /* img {
+				position: relative;
+				height: 85%;
+				transform: translate(-50%, -50%);
+				left: 50%;
+				top: -36%;
+			} */
 }
 
 body.dark .create-gif__center__frame {
@@ -1046,6 +1054,28 @@ body.dark .create-gif__center__button:hover {
   border-color: #ffffff;
 }
 
+.create-gif__center #chronometer,
+.create-gif__center #repeat {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: #572ee5;
+  line-height: 1.38rem;
+  position: absolute;
+  right: 3.47rem;
+  top: 26.44rem;
+}
+
+body.dark .create-gif__center #chronometer, body.dark
+.create-gif__center #repeat {
+  color: #ffffff;
+}
+
+.create-gif__center #repeat {
+  border-bottom: 0.13rem solid #5ed7c6;
+  cursor: pointer;
+}
+
 .create-gif__pelicula {
   position: absolute;
   top: 23.91rem;
@@ -1054,5 +1084,64 @@ body.dark .create-gif__center__button:hover {
 
 body.dark .create-gif__pelicula {
   content: url("/src/assets/pelicula-modo-noc.svg");
+}
+
+.gifRec {
+  position: absolute;
+  display: block;
+  height: 20rem;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.imgUpload {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #572ee5;
+  opacity: 0.6;
+}
+
+.textUpload {
+  display: block;
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: #ffffff;
+  line-height: 1.19rem;
+  text-align: center;
+  top: 50%;
+  transform: translateX(-50%);
+  left: 50%;
+  opacity: 1;
+}
+
+.iconUpload {
+  display: block;
+  position: absolute;
+  width: 1.38rem;
+  height: 1.38rem;
+  top: 40%;
+  left: 50%;
+  opacity: 1;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iconRotate {
+  animation: 3s rotate linear infinite;
+  transform-origin: 50% 50%;
 }
 /*# sourceMappingURL=style.css.map */
