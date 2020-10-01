@@ -673,6 +673,15 @@ body.dark .footer {
   background: url(/src/assets/icon-max-hover.svg);
 }
 
+.gifo-card__icons-group .icon-delete {
+  background: url(/src/assets/icon-trash-normal.svg);
+}
+
+.gifo-card__icons-group .icon-delete:hover {
+  cursor: pointer;
+  background: url(/src/assets/icon-trash-hover.svg);
+}
+
 .gifo-card:hover .gifo-card__gif {
   opacity: 0.6;
 }
@@ -1127,6 +1136,7 @@ body.dark .create-gif__pelicula {
   width: 1.38rem;
   height: 1.38rem;
   top: 40%;
+  transform: translateX(-50%);
   left: 50%;
   opacity: 1;
 }
@@ -1143,5 +1153,39 @@ body.dark .create-gif__pelicula {
 .iconRotate {
   animation: 3s rotate linear infinite;
   transform-origin: 50% 50%;
+}
+
+.icon-link {
+  display: block;
+  position: absolute;
+  top: 1.5rem;
+  right: 4.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.38rem;
+  background: url(/src/assets/icon-link-normal.svg);
+  opacity: 1;
+}
+
+.icon-download2 {
+  display: block;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.38rem;
+  background: url(/src/assets/icon-download.svg);
+  opacity: 1;
+}
+
+.icon-link:hover {
+  cursor: pointer;
+  background: url(/src/assets/icon-link-hover.svg);
+}
+
+.icon-download2:hover {
+  cursor: pointer;
+  background: url(/src/assets/icon-download-hover.svg);
 }
 /*# sourceMappingURL=style.css.map */

@@ -19,8 +19,7 @@ let gifsTrendingArray = [];
 let favoritesIdArray = [];
 let gifsFavoriteArray = [];
 let myGifArray = [];
-
-//let mapOfFavGifs = new Map(); // This map contains the favorites Gifs Objets
+let myGifArrayFromLS = [];
 
 class gifObj { };
 
@@ -30,6 +29,9 @@ let is_recording = false;
 
 if (JSON.parse(localStorage.getItem('favoritesIdArray')) != null) {
     favoritesIdArray = JSON.parse(localStorage.getItem('favoritesIdArray'));
+}
+if (JSON.parse(localStorage.getItem('myGif')) != null) {
+    myGifArrayFromLS = JSON.parse(localStorage.getItem('myGif'));
 }
 
 let darkModeInit = localStorage.getItem('darkMode');
@@ -48,21 +50,56 @@ async function gifoSearchFetch(keyword) {
 function displaySearchGrid(gifsArray, init, finish) {
     let gifoGridElement = document.querySelector('#gifo-grid');
 
+    let from = init;
+    if (from == 'mygifos') {
+        init = 0;
+    }
+
     for (let i = init; i < finish; i++) {
-        let gifoImg = new Image();
-        gifoImg.src = gifsArray[i].url;
-        let gifoUser = gifsArray[i].username;
-        let gifoTitle = gifsArray[i].title;
-        let gifId = gifsArray[i].id;
+        let gifoImg;
+        let gifoUser;
+        let gifoTitle;
+        let gifId;
 
         let classLike = 'icon-like';
 
-        if (favoritesIdArray.indexOf(gifId) != -1) {
-            classLike = 'icon-like__active';
+        if (from == 'mygifos') {
+            gifoImg = new Image();
+            gifoImg.src = gifsArray[i];
+            gifoUser = 'Santi';
+            gifoTitle = `Mi gifs #${i + 1}`;
+            gifId = '';
+            //classLike = 'icon-delete';
+
+        } else {
+            gifoImg = new Image();
+            gifoImg.src = gifsArray[i].url;
+            gifoUser = gifsArray[i].username;
+            gifoTitle = gifsArray[i].title;
+            gifId = gifsArray[i].id;
+            
+            if (favoritesIdArray.indexOf(gifId) != -1) {
+                classLike = 'icon-like__active';
+            }
         }
 
-        gifoGridElement.innerHTML +=
-            `<div id="gifo-search-${i + 1}" class="gifo-card card-search">
+        if (from == 'mygifos') {
+            gifoGridElement.innerHTML +=
+                `<div id="gifo-search-${i + 1}" class="gifo-card card-search">
+            <img class="gifo-card__gif card-search" src=${gifoImg.src} alt="gifo search ${i + 1}">
+            <div class="gifo-card__middle">
+                <h2 class="gifo-card__user"> ${gifoUser} </h2>
+                <h2 class="gifo-card__title"> ${gifoTitle} </h2>
+                <div class="gifo-card__icons-group">
+                    <div id="${i}" class="icon-delete" onclick="myApp.EventHandlers.addRemoveMyGifos(this.id)"></div>
+                    <div id="${gifoImg.src}" class="icon-download" onclick="myApp.EventHandlers.downloadGif(this.id)"></div>
+                    <div id="se-#${i}" class="icon-max" onclick="myApp.EventHandlers.expandGif('${gifId}', 'sr-#${i}')" ></div>
+                </div>
+            </div>
+        </div>`;
+        } else {
+            gifoGridElement.innerHTML +=
+                `<div id="gifo-search-${i + 1}" class="gifo-card card-search">
                 <img class="gifo-card__gif card-search" src=${gifoImg.src} alt="gifo search ${i + 1}">
                 <div class="gifo-card__middle">
                     <h2 class="gifo-card__user"> ${gifoUser} </h2>
@@ -74,6 +111,7 @@ function displaySearchGrid(gifsArray, init, finish) {
                     </div>
                 </div>
             </div>`;
+        }
     }
 }
 
@@ -692,8 +730,55 @@ myApp.EventHandlers = {
         }
     },
     goMyGifos: function () {
-        //let gifosElement = document.querySelector('#main');
-        //gifosElement.innerHTML = '';
+        let myGifArrayFromLS = JSON.parse(localStorage.getItem('myGif'));
+
+        if (document.querySelector('#gifos') != null) {
+            document.querySelector('#gifos').remove();
+        }
+        let secSearch = document.querySelector('#gifo-sec-search');
+        if (secSearch === null) {
+            document.querySelector('.create-gif').remove();
+            document.querySelector('#main').innerHTML =
+                `<section id="gifo-sec-search" class="sec-search"></section>
+            <section class="sec-trending" id="sec-trending">
+            <div class="sec-trending__title">
+                <h2>Trending GIFOS</h2>
+                <h3>Mira los últimos GIFO de nuestra comunidad.</h3>
+            </div>
+
+            <div class="sec-trending__gifs">
+                <div id="arrow-left" class="sec-trending__icon-arrow-left" onclick="myApp.EventHandlers.leftArrow()">
+                </div>
+
+                <div id="gifo-trendig-1" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-2" class="gifo-card card-trending"></div>
+                <div id="gifo-trendig-3" class="gifo-card card-trending"></div>
+
+                <div class="sec-trending__icon-arrow-right" onclick="myApp.EventHandlers.rightArrow()"></div>
+            </div>
+            </section>`;
+            gifoTrendingFetch()
+                .then(gifsTrendingPromise => displayTrending(gifsTrendingPromise))
+                .catch(err => console.log('Error gifs trending promise: ' + err));
+            secSearch = document.querySelector('#gifo-sec-search');
+
+        }
+        secSearch.innerHTML =
+            `<div id="gifos" class="sec-favorites">
+                <img class="" src="/src/assets/icon-mis-gifos.svg" alt="search not found">
+                <h2> Mis GIFOS </h2>
+                <div id="gifo-grid" class="sec-search-display__grid favorites-grid"></div>
+            </div>`;
+
+        if (myGifArrayFromLS == null || myGifArrayFromLS.length == 0) {
+            secSearch.innerHTML +=
+                `<img class="empty-fav-icon" src="/src/assets/icon-mis-gifos-sin-contenido.svg" alt="search not found">
+            <h2 class="empty-fav-text"> "¡Anímate a crear tu primer GIFO!" </h2>`;
+
+        } else {
+            //myGifArrayFromLS = []; //gifsFavoriteArray = [];
+            displaySearchGrid(myGifArrayFromLS, 'mygifos', myGifArrayFromLS.length);
+        }
     },
     createGif: function () {
         let main = document.querySelector('#main');
@@ -805,14 +890,25 @@ myApp.EventHandlers = {
                     .then(data => {
                         myGifUrl = data.data.images.original.url;
                         myGifArray.push(myGifUrl);
-                        //console.log(myGifArray);
                         localStorage.setItem('myGif', JSON.stringify(myGifArray));
-                        
+
                         document.querySelector('.iconUpload').setAttribute('src', '/src/assets/ok.svg');
                         document.querySelector('.iconUpload').classList.remove('iconRotate');
                         document.querySelector('.textUpload').textContent = 'GIFO subido con éxito';
+
+                        document.querySelector('#frameContainer').innerHTML +=
+                        `<div id="${myGifUrl}" class="icon-download2" onclick="myApp.EventHandlers.downloadGif(this.id)"></div>
+                        <div class="icon-link" ></div>`;
+
                     })
             });
+    },
+    addRemoveMyGifos: function (id) {
+        console.log(id);
+        myGifArray =  JSON.parse(localStorage.getItem('myGif'));
+        myGifArray.splice(id, 1); // Remove from array
+        localStorage.setItem('myGif', JSON.stringify(myGifArray));
+        this.goMyGifos();
     }
 };
 
