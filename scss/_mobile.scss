@@ -1,0 +1,100 @@
+@media only screen and (max-width: 23.4375rem) {
+	body {
+		//min-width: 23.4375rem;
+		width: 23.4375rem;
+		//margin: 0;
+		//overflow-x: hidden;
+	}
+
+	.header {
+		height: 5.94rem;
+		width: 100%;
+		padding: 0 1.5rem;
+
+		&__logo-img {
+			height: 3.05rem;
+			width: 3.05rem;
+		}
+
+		&__nav,
+		&__icon-new-gif {
+			display: none;
+		}
+	}
+
+	.sec-search {
+		top: 0;
+		min-height: 27.5rem;
+
+		&__title {
+			height: 6.19rem;
+			width: 17.88rem;
+			top: 0.44rem;
+
+			h2 {
+				font-size: 1.56rem;
+				line-height: 2.06rem;
+			}
+		}
+
+		&__block {
+			top: 8.56rem;
+
+			&__block-img {
+				img {
+					width: 17.06rem;
+					height: 8.13rem;
+				}
+			}
+
+			&__search-box {
+				width: 20.88rem;
+				height: 3.13;
+
+				form {
+					input {
+						width: 15rem;
+						height: 1.38rem;
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+
+		&__trending {
+			top: 21.75rem;
+
+			h3 {
+				width: 14.06rem;
+			}
+		}
+	}
+
+	.sec-trending {
+		height: 26.88rem;
+
+		&__title {
+			top: 2rem;
+			height: auto;
+
+			h2 {
+				font-size: 1.25rem;
+			}
+			h3 {
+				width: 14rem;
+				font-size: 1rem;
+				line-height: 1.44rem;
+			}
+		}
+
+		&__gifs {
+			margin: 2rem 1.38rem;
+			width: 58rem;
+			.card-trending {
+				height: 11.69rem;
+				width: 15.19rem;
+				
+			}
+		}
+	}
+}

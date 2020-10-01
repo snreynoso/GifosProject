@@ -1188,4 +1188,80 @@ body.dark .create-gif__pelicula {
   cursor: pointer;
   background: url(/src/assets/icon-download-hover.svg);
 }
+
+@media only screen and (max-width: 23.4375rem) {
+  body {
+    width: 23.4375rem;
+  }
+  .header {
+    height: 5.94rem;
+    width: 100%;
+    padding: 0 1.5rem;
+  }
+  .header__logo-img {
+    height: 3.05rem;
+    width: 3.05rem;
+  }
+  .header__nav, .header__icon-new-gif {
+    display: none;
+  }
+  .sec-search {
+    top: 0;
+    min-height: 27.5rem;
+  }
+  .sec-search__title {
+    height: 6.19rem;
+    width: 17.88rem;
+    top: 0.44rem;
+  }
+  .sec-search__title h2 {
+    font-size: 1.56rem;
+    line-height: 2.06rem;
+  }
+  .sec-search__block {
+    top: 8.56rem;
+  }
+  .sec-search__block__block-img img {
+    width: 17.06rem;
+    height: 8.13rem;
+  }
+  .sec-search__block__search-box {
+    width: 20.88rem;
+    height: 3.13;
+  }
+  .sec-search__block__search-box form input {
+    width: 15rem;
+    height: 1.38rem;
+    font-size: 1rem;
+  }
+  .sec-search__trending {
+    top: 21.75rem;
+  }
+  .sec-search__trending h3 {
+    width: 14.06rem;
+  }
+  .sec-trending {
+    height: 26.88rem;
+  }
+  .sec-trending__title {
+    top: 2rem;
+    height: auto;
+  }
+  .sec-trending__title h2 {
+    font-size: 1.25rem;
+  }
+  .sec-trending__title h3 {
+    width: 14rem;
+    font-size: 1rem;
+    line-height: 1.44rem;
+  }
+  .sec-trending__gifs {
+    margin: 2rem 1.38rem;
+    width: 58rem;
+  }
+  .sec-trending__gifs .card-trending {
+    height: 11.69rem;
+    width: 15.19rem;
+  }
+}
 /*# sourceMappingURL=style.css.map */
