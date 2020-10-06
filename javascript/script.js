@@ -27,6 +27,8 @@ let camera;
 let recorder;
 let is_recording = false;
 
+let hamMenuState = false;
+
 if (JSON.parse(localStorage.getItem('favoritesIdArray')) != null) {
     favoritesIdArray = JSON.parse(localStorage.getItem('favoritesIdArray'));
 }
@@ -69,8 +71,6 @@ function displaySearchGrid(gifsArray, init, finish) {
             gifoUser = 'Santi';
             gifoTitle = `Mi gifs #${i + 1}`;
             gifId = '';
-            //classLike = 'icon-delete';
-
         } else {
             gifoImg = new Image();
             gifoImg.src = gifsArray[i].url;
@@ -150,7 +150,7 @@ function searchNotFound(keyword) {
     gifosElement.innerHTML +=
         `<div class="sec-search-display__line-top-result"></div>
         <h2 class="sec-search-display__title-result">${keyword}</h2>
-        <img class="" src="/src/assets/icon-busqueda-sin-resultado.svg" alt="search not found">
+        <img class="" src="/assets/icon-busqueda-sin-resultado.svg" alt="search not found">
         <h2 class="sec-search-display__title-result not-found">Intenta con otra busqueda</h2>`;
 
 }
@@ -578,7 +578,7 @@ myApp.EventHandlers = {
         expandCard.innerHTML +=
             `<div id="expand" class="card-expand">
                 <div class="card-expand__container">       
-                    <img class="card-expand__container__close-icon" src="/src/assets/close.svg" alt="close icon" onclick="myApp.EventHandlers.closeExpand('${elementBack}', '${gifId}')">
+                    <img class="card-expand__container__close-icon" src="/assets/close.svg" alt="close icon" onclick="myApp.EventHandlers.closeExpand('${elementBack}', '${gifId}')">
                     <div id="arrow-left" class="card-expand__container__arrow-left sec-trending__icon-arrow-left" onclick="myApp.EventHandlers.leftArrowEx()"></div>
                     <img id="img-ex" class="card-expand__container__gif" src=${url} alt="gifo expanded">
                     <div id="arrow-right" class="card-expand__container__arrow-right sec-trending__icon-arrow-right" onclick="myApp.EventHandlers.rightArrowEx()"></div>
@@ -700,14 +700,14 @@ myApp.EventHandlers = {
         }
         secSearch.innerHTML =
             `<div id="gifos" class="sec-favorites">
-                <img class="" src="/src/assets/icon-favoritos.svg" alt="search not found">
+                <img class="" src="/assets/icon-favoritos.svg" alt="search not found">
                 <h2> Favoritos </h2>
                 <div id="gifo-grid" class="sec-search-display__grid favorites-grid"></div>
             </div>`;
 
         if (favoritesIdArray.length == 0) {
             secSearch.innerHTML +=
-                `<img class="empty-fav-icon" src="/src/assets/icon-fav-sin-contenido.svg" alt="search not found">
+                `<img class="empty-fav-icon" src="/assets/icon-fav-sin-contenido.svg" alt="search not found">
             <h2 class="empty-fav-text"> "¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!" </h2>`;
 
         } else {
@@ -720,6 +720,7 @@ myApp.EventHandlers = {
             if (gifsFavoriteArray.length < 12) {
                 endMore = gifsFavoriteArray.length;
             } else {
+                let gifosElement = document.querySelector('#gifos');
                 gifosElement.innerHTML +=
                     `<div>
                         <p id="see-more" onclick="myApp.EventHandlers.seeMore('favorites')" class="sec-search-display__see-more">VER MAS</p>
@@ -765,14 +766,14 @@ myApp.EventHandlers = {
         }
         secSearch.innerHTML =
             `<div id="gifos" class="sec-favorites">
-                <img class="" src="/src/assets/icon-mis-gifos.svg" alt="search not found">
+                <img class="" src="/assets/icon-mis-gifos.svg" alt="search not found">
                 <h2> Mis GIFOS </h2>
                 <div id="gifo-grid" class="sec-search-display__grid favorites-grid"></div>
             </div>`;
 
         if (myGifArrayFromLS == null || myGifArrayFromLS.length == 0) {
             secSearch.innerHTML +=
-                `<img class="empty-fav-icon" src="/src/assets/icon-mis-gifos-sin-contenido.svg" alt="search not found">
+                `<img class="empty-fav-icon" src="/assets/icon-mis-gifos-sin-contenido.svg" alt="search not found">
             <h2 class="empty-fav-text"> "¡Anímate a crear tu primer GIFO!" </h2>`;
 
         } else {
@@ -786,8 +787,8 @@ myApp.EventHandlers = {
             `<div class="create-gif">
 
         <div class="create-gif__camara">
-            <img src="/src/assets/camara.svg" alt="camara de video">
-            <img src="/src/assets/element-luz-camara.svg" alt="">
+            <img src="/assets/camara.svg" alt="camara de video">
+            <img src="/assets/element-luz-camara.svg" alt="">
         </div>
 
         <div id="create-gif-center" class="create-gif__center">
@@ -811,7 +812,7 @@ myApp.EventHandlers = {
         </div>
   
         <div class="create-gif__pelicula">
-            <img src="/src/assets/pelicula.svg" alt="">
+            <img src="/assets/pelicula.svg" alt="">
         </div>
     </div>`;
     },
@@ -874,7 +875,7 @@ myApp.EventHandlers = {
 
         frameCont.innerHTML +=
             `<div class="imgUpload"></div>
-            <img class="iconUpload iconRotate" src="/src/assets/loader.svg" alt="imagen cargando...">
+            <img class="iconUpload iconRotate" src="/assets/loader.svg" alt="imagen cargando...">
             <h1 class="textUpload"> Estamos subiendo tu GIFO </h1>`;
 
         fetch(urlUpload, {
@@ -892,7 +893,7 @@ myApp.EventHandlers = {
                         myGifArray.push(myGifUrl);
                         localStorage.setItem('myGif', JSON.stringify(myGifArray));
 
-                        document.querySelector('.iconUpload').setAttribute('src', '/src/assets/ok.svg');
+                        document.querySelector('.iconUpload').setAttribute('src', '/assets/ok.svg');
                         document.querySelector('.iconUpload').classList.remove('iconRotate');
                         document.querySelector('.textUpload').textContent = 'GIFO subido con éxito';
 
@@ -909,6 +910,13 @@ myApp.EventHandlers = {
         myGifArray.splice(id, 1); // Remove from array
         localStorage.setItem('myGif', JSON.stringify(myGifArray));
         this.goMyGifos();
+    },
+    hamburguerMenu: function() {
+        hamMenuState = !hamMenuState;
+        
+        //if(hamMenuState) {
+            document.querySelector('#header__nav').classList.toggle('hamburguer-menu');
+        //}
     }
 };
 

@@ -46,6 +46,14 @@ body {
 		border-top: 0.32rem solid $color_black;
 	}
 
+	#menuHam_H01 {
+		display: none;
+	  }
+	  
+	.hamb_H01 {
+		display: none;
+	}
+
 	&__logo-img {
 		width: 4.25rem;
 		height: 3.75rem;
@@ -74,6 +82,7 @@ body {
 		font-size: 0.81rem;
 		font-weight: $font_weight_bold;
 		line-height: 1rem;
+		text-transform: uppercase;
 
 		position: absolute;
 		right: 16.84rem;
@@ -494,18 +503,22 @@ body {
 	&__icon-arrow-left {
 		width: 2.5rem;
 		height: 2.5rem;
-		background: url(/src/assets/button-slider-left.svg) no-repeat;
+		background: url(/assets/button-slider-left.svg) no-repeat;
+		background-size: contain;
 
 		body.dark & {
-			background: url(/src/assets/button-slider-left-md-noct.svg) no-repeat;
+			background: url(/assets/button-slider-left-md-noct.svg) no-repeat;
+			background-size: contain;
 		}
 	}
 
 	&__icon-arrow-left:hover {
-		background: url(/src/assets/button-slider-left-hover.svg) no-repeat;
+		background: url(/assets/button-slider-left-hover.svg) no-repeat;
+		background-size: contain;
 
 		body.dark & {
 			background-color: $color_black;
+			background-size: contain;
 			filter: invert(1);
 		}
 	}
@@ -513,18 +526,22 @@ body {
 	&__icon-arrow-right {
 		width: 2.5rem;
 		height: 2.5rem;
-		background: url(/src/assets/Button-Slider-right.svg) no-repeat;
+		background: url(/assets/Button-Slider-right.svg) no-repeat;
+		background-size: contain;
 
 		body.dark & {
-			background: url(/src/assets/button-slider-right-md-noct.svg) no-repeat;
+			background: url(/assets/button-slider-right-md-noct.svg) no-repeat;
+			background-size: contain;
 		}
 	}
 
 	&__icon-arrow-right:hover {
-		background: url(/src/assets/Button-Slider-right-hover.svg) no-repeat;
+		background: url(/assets/Button-Slider-right-hover.svg) no-repeat;
+		background-size: contain;
 
 		body.dark & {
 			background-color: $color_black;
+			background-size: contain;
 			filter: invert(1);
 		}
 	}
@@ -533,13 +550,14 @@ body {
 // -------------------------------- FOOTER ------------------------------------ //
 .footer {
 	position: relative;
+
 	height: 7.25rem;
 	border-bottom: 0.32rem solid $color_violet;
-	padding: 0 9.75rem;
+	padding: 3rem 9.75rem;
 
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	//justify-content: space-between;
 	align-items: center;
 
 	body.dark & {
@@ -547,7 +565,9 @@ body {
 	}
 
 	&__community {
-		width: 12.01rem;
+		position: relative;
+		left: 0;
+		width: 6rem;
 
 		display: flex;
 		flex-direction: row;
@@ -562,6 +582,13 @@ body {
 
 			display: block;
 		}
+	}
+
+	&__community-icon-group {
+		position: relative;
+		width: 6.15rem;
+		display: flex;
+		justify-content: space-between;
 
 		&__icon {
 			color: $color_grey;
@@ -573,6 +600,9 @@ body {
 	}
 
 	&__copy-right {
+		position: absolute;
+		right: 10rem;
+
 		h1 {
 			@include Roboto_Black;
 			font-size: 0.81rem;
@@ -647,52 +677,52 @@ body {
 		}
 
 		.icon-like {
-			background: url(/src/assets/icon-fav.svg);
+			background: url(/assets/icon-fav.svg);
 		}
 
 		.icon-like:hover {
 			cursor: pointer;
-			background: url(/src/assets/icon-fav-hover.svg);
+			background: url(/assets/icon-fav-hover.svg);
 		}
 
 		.icon-like__active {
-			background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav.svg);
+			background: url(/assets/icon-fav-active.svg), url(/assets/icon-fav.svg);
 			background-repeat: no-repeat, no-repeat;
 			background-position: center, center;
 		}
 
 		.icon-like__active:hover {
 			cursor: pointer;
-			background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav-hover.svg);
+			background: url(/assets/icon-fav-active.svg), url(/assets/icon-fav-hover.svg);
 			background-repeat: no-repeat, no-repeat;
 			background-position: center, center;
 		}
 
 		.icon-download {
-			background: url(/src/assets/icon-download.svg);
+			background: url(/assets/icon-download.svg);
 		}
 
 		.icon-download:hover {
 			cursor: pointer;
-			background: url(/src/assets/icon-download-hover.svg);
+			background: url(/assets/icon-download-hover.svg);
 		}
 
 		.icon-max {
-			background: url(/src/assets/icon-max-normal.svg);
+			background: url(/assets/icon-max-normal.svg);
 		}
 
 		.icon-max:hover {
 			cursor: pointer;
-			background: url(/src/assets/icon-max-hover.svg);
+			background: url(/assets/icon-max-hover.svg);
 		}
 
 		.icon-delete {
-			background: url(/src/assets/icon-trash-normal.svg);
+			background: url(/assets/icon-trash-normal.svg);
 		}
 
 		.icon-delete:hover {
 			cursor: pointer;
-			background: url(/src/assets/icon-trash-hover.svg);
+			background: url(/assets/icon-trash-hover.svg);
 		}
 	}
 }
@@ -749,7 +779,7 @@ body {
 			cursor: pointer;
 
 			body.dark & {
-				content: url('/src/assets/close-modo-noct.svg');
+				content: url('/assets/close-modo-noct.svg');
 			}
 		}
 
@@ -881,7 +911,7 @@ body {
 		flex-direction: row;
 
 		body.dark & {
-			content: url('/src/assets/camara-modo-noc.svg');
+			content: url('/assets/camara-modo-noc.svg');
 		}
 	}
 
@@ -1106,7 +1136,7 @@ body {
 		right: 10.46rem;
 
 		body.dark & {
-			content: url('/src/assets/pelicula-modo-noc.svg');
+			content: url('/assets/pelicula-modo-noc.svg');
 		}
 	}
 }
@@ -1182,7 +1212,7 @@ body {
 	width: 2rem;
 	height: 2rem;
 	border-radius: 0.38rem;
-	background: url(/src/assets/icon-link-normal.svg);
+	background: url(/assets/icon-link-normal.svg);
 	opacity: 1;
 }
 
@@ -1194,17 +1224,16 @@ body {
 	width: 2rem;
 	height: 2rem;
 	border-radius: 0.38rem;
-	background: url(/src/assets/icon-download.svg);
+	background: url(/assets/icon-download.svg);
 	opacity: 1;
 }
 
-
 .icon-link:hover {
 	cursor: pointer;
-	background: url(/src/assets/icon-link-hover.svg);
+	background: url(/assets/icon-link-hover.svg);
 }
 
 .icon-download2:hover {
 	cursor: pointer;
-	background: url(/src/assets/icon-download-hover.svg);
+	background: url(/assets/icon-download-hover.svg);
 }

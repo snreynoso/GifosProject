@@ -1,30 +1,85 @@
-@media only screen and (max-width: 23.4375rem) {
+$mobile: 23.4375rem;
+
+@media only screen and (max-width: $mobile) {
 	body {
-		//min-width: 23.4375rem;
-		width: 23.4375rem;
-		//margin: 0;
-		//overflow-x: hidden;
+		min-width: $mobile;
+		width: 100%;
+		margin: 0;
+		
 	}
 
 	.header {
+		position: sticky;
 		height: 5.94rem;
 		width: 100%;
-		padding: 0 1.5rem;
+		left: 0;
+		padding: 0;
 
-		&__logo-img {
+		&__logo-img,
+		&__logo-img-noc {
 			height: 3.05rem;
 			width: 3.05rem;
+			left: 1.5rem;
 		}
 
 		&__nav,
 		&__icon-new-gif {
 			display: none;
 		}
+
+		// MENU HAMBURGUESA
+		.contMenuHam_H01 {
+			position: absolute;
+			right: 1.75rem;
+			top: 50%;
+		}
+
+		label,
+		label:before,
+		label:after {
+			position: absolute;
+			width: 1.13rem;
+			height: 0.13rem;
+			background-color: $color_violet;
+			transition: 0.6s;
+
+			body.dark & {
+				background-color: $color_white;
+			}
+		}
+
+		label {
+			cursor: pointer;
+			top: 50%;
+			left: 50%;
+			margin-left: -0.565rem;
+			margin-top: -0.065rem;
+		}
+		label::before {
+			content: "";
+			transform: translateY(0.3rem);
+		}
+		label::after {
+			content: "";
+			transform: translateY(-0.3rem);
+		}
+
+		#menuHam_H01:checked ~ .contMenuHam_H01 label {
+			width: 0;
+		}
+
+		#menuHam_H01:checked ~ .contMenuHam_H01 label::before {
+			transform: rotate(45deg) translate(0);
+		}
+
+		#menuHam_H01:checked ~ .contMenuHam_H01 label::after {
+			transform: rotate(-45deg) translate(0);
+		}
 	}
 
 	.sec-search {
 		top: 0;
-		min-height: 27.5rem;
+		min-height: 29rem;
 
 		&__title {
 			height: 6.19rem;
@@ -70,6 +125,15 @@
 		}
 	}
 
+	.sec-search-display {
+
+		&__grid{
+			grid-template-columns: auto auto;
+			grid-template-rows: 7.5rem;
+			grid-column-gap: 1.3rem;
+			grid-row-gap: 1.3rem;
+		}
+	}
 	.sec-trending {
 		height: 26.88rem;
 
@@ -89,11 +153,357 @@
 
 		&__gifs {
 			margin: 2rem 1.38rem;
-			width: 58rem;
+			width: 21rem;
 			.card-trending {
 				height: 11.69rem;
 				width: 15.19rem;
+			}
+		}
+
+		&__icon-arrow-left,
+		&__icon-arrow-right {
+			width: 1.8rem;
+			height: 1.8rem;
+		}
+	}
+
+	#gifo-trendig-2,
+	#gifo-trendig-3 {
+		display: none;
+	}
+
+	.sec-favorites > img {
+		position: relative;
+			top: 0.4rem;
+			width: 1.75rem;
+			height: 1.31rem;
+	}
+
+	.sec-favorites > h2 {
+		font-size: 1.25rem;
+		line-height: 1.88rem;
+	}
+
+	.sec-favorites .favorites-grid {
+		justify-content: center;
+		width: 100%;
+		padding-bottom: 0.5rem;
+	}
+
+	.favorites {
+		&__grid{
+			grid-template-columns: auto auto;
+			grid-template-rows: 7.5rem;
+			grid-column-gap: 1.3rem;
+			grid-row-gap: 1.3rem;
+		}
+	}
+
+	.footer {
+		padding: 2.94rem 0 1.44rem 0;
+		height: 12.25rem;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+
+		&__community {
+			left: 0;
+			text-align: center;
+			h1 {
+				text-align: center;
+				font-size: 0.94rem;
+				line-height: 1.13rem;
+			}
+		}
+
+		&__community-icon-group {
+			left: 0;
+		}
+
+		&__copy-right {
+			position: relative;
+			left: 0;
+			h1 {
+				text-align: center;
+				font-size: 0.88rem;
+				line-height: 1.25rem;
+			}
+		}
+	}
+
+	.hamburguer-menu {
+		position: absolute;
+
+		top: 5.94rem - 0.31rem;
+		left: 0rem;
+		width: 100%;
+		height: 30.25rem;
+		background-color: #562ee5da;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+
+		body.dark & {
+			background-color: rgba(0, 0, 0, 0.952);
+		}
+
+		@keyframes hamMenu {
+			from {left: 24rem;}
+			to {left:0;}
+		}
+
+		animation-name: hamMenu;
+		animation-duration: 0.5s;
+
+		a {
+			color: $color_white;
+			text-transform: capitalize;
+			line-height: 3.75rem;
+			font-size: 0.94rem;
+			border-bottom: 0.06rem solid $color_white;
+		}
+	}
+
+	.card-search {
+		//position: relative;
+		width: 9.75rem;
+		height: 7.5rem;
+	}
+
+	.empty-fav-icon {
+		width: 5rem;
+		padding: 0;
+	}
+
+	.empty-fav-text {
+		width: 16rem;
+	}
+
+	.gifo-card {
+		position: relative;
+		background-color: $color_violet;
+	
+		&__gif {
+			opacity: 1;
+			//transition: 0.1s ease;
+			backface-visibility: hidden;
+			background-color: $color_grey;
+			object-fit: cover;
+		}
+	
+		&__middle {
+			opacity: 0;
+		}
+	
+		&__user {
+			position: absolute;
+			top: 60%;
+			left: 5%;
+			font-family: $font_Roboto;
+			font-weight: $font_weight_regular;
+			font-size: 0.8rem;
+			line-height: 1.13rem;
+			color: $color_white;
+			text-transform: lowercase;
+		}
+	
+		&__user::first-letter {
+			text-transform: capitalize;
+		}
+	
+		&__title {
+			position: absolute;
+			top: 72%;
+			left: 5%;
+			font-family: $font_Roboto;
+			font-weight: $font_weight_bold;
+			font-size: 0.8rem;
+			line-height: 0.8rem;
+			color: $color_white;
+			text-transform: lowercase;
+			width: 90%;
+		}
+	
+		&__title::first-letter {
+			text-transform: capitalize;
+		}
+	
+		&__icons-group {
+			position: absolute;
+			top: 5%;
+			right: 5%;
+			width: 5rem;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+	
+			div {
+				width: 1.5rem;
+				height: 1.5rem;
+				border-radius: 0.2rem;
+				background-size: contain;
+			}
+	
+			.icon-like {
+				background: url(/src/assets/icon-fav.svg);
+				background-size: contain;
 				
+			}
+	
+			.icon-like:hover {
+				cursor: pointer;
+				background: url(/src/assets/icon-fav-hover.svg);
+				background-size: contain;
+			}
+	
+			.icon-like__active {
+				background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav.svg);
+				background-repeat: no-repeat, no-repeat;
+				background-position: center, center;
+				background-size: 1rem, auto;
+			}
+	
+			.icon-like__active:hover {
+				cursor: pointer;
+				background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav-hover.svg);
+				background-repeat: no-repeat, no-repeat;
+				background-position: center, center;
+				background-size: 1rem, auto;
+			}
+	
+			.icon-download {
+				background: url(/src/assets/icon-download.svg);
+				background-size: contain;
+			}
+	
+			.icon-download:hover {
+				cursor: pointer;
+				background: url(/src/assets/icon-download-hover.svg);
+				background-size: contain;
+			}
+	
+			.icon-max {
+				background: url(/src/assets/icon-max-normal.svg);
+				background-size: contain;
+			}
+	
+			.icon-max:hover {
+				cursor: pointer;
+				background: url(/src/assets/icon-max-hover.svg);
+				background-size: contain;
+			}
+	
+			.icon-delete {
+				background: url(/src/assets/icon-trash-normal.svg);
+				background-size: contain;
+			}
+	
+			.icon-delete:hover {
+				cursor: pointer;
+				background: url(/src/assets/icon-trash-hover.svg);
+				background-size: contain;
+			}
+		}
+	}
+
+	.card-expand {
+		position: fixed;
+		top: 0; //50%;
+	
+		left: 0; //50%;
+		width: 100%; //65rem;
+		height: 100%; //45rem;
+	
+		background: rgba(128, 128, 128, 0.384);
+		z-index: 120;
+	
+		&__container {
+			position: relative;
+			transform: translateX(-50%) translateY(-50%);
+			left: 50%;
+			top: 50%;
+			opacity: 1;
+			width: 95%;
+			height: 50%;
+			background-color: $color_white;
+	
+			body.dark & {
+				background: $color_darkGrey;
+			}
+	
+			&__close-icon {
+				position: absolute;
+				top: 5%;
+				right: 5%;
+				cursor: pointer;
+	
+				body.dark & {
+					content: url('/src/assets/close-modo-noct.svg');
+				}
+			}
+	
+			&__arrow-left {
+				position: absolute;
+				left: 5%;
+				top: 35%;
+			}
+	
+			&__gif {
+				position: absolute;
+				top: 3rem;
+				transform: translateX(-50%);
+				left: 50%;
+				max-width: 70%;
+				height: 50%;
+				object-fit: cover;
+			}
+	
+			&__arrow-right {
+				position: absolute;
+				right: 5%;
+				top: 35%;
+			}
+	
+			&__exp-pos {
+				position: absolute;
+				top: 85%;
+				transform: translateX(-50%);
+				left: 50%;
+				width: 16%;
+	
+				.exp-like,
+				.exp-dwld {
+					border: 0.06rem solid $color_violet;
+	
+					body.dark & {
+						border: none;
+					}
+				}
+			}
+	
+			&__user,
+			&__title {
+				font-family: $font_Roboto;
+				color: $color_black;
+				line-height: 1.13rem;
+			}
+	
+			&__user {
+				position: absolute;
+				top: 70%;
+				left: 15%;
+				font-size: 0.96rem;
+				font-weight: $font_weight_regular;
+			}
+			&__title {
+				position: absolute;
+				top: 75%;
+				left: 15%;
+				font-size: 1rem;
+				font-weight: $font_weight_bold;
 			}
 		}
 	}
