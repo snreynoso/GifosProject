@@ -37,7 +37,7 @@
             </a>
         </div>
 
-         <!-- MENU HAMBURGUER -->
+        <!-- MENU HAMBURGUER -->
         <input type="checkbox" id="menuHam_H01">
         <div class="contMenuHam_H01">
             <label for="menuHam_H01" onclick="myApp.EventHandlers.hamburguerMenu()"></label>
@@ -58,13 +58,17 @@
                 </div>
 
                 <div class="sec-search__block__search-box">
-                    <form id="append-list" autocomplete="off" action="/action_page.php">
+                    <form id="append-list" autocomplete="off" action="/action_page.php" autocomplete="on">
                         <input id="myInput" type="text" name="myCuontry" placeholder="Busca GIFOS y más"
                             onclick="myApp.EventHandlers.cleanSearch()">
                         <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search"
-                                class="icon-search" src="/assets/icon-search.svg" alt="icon search"></a>
+                                class="icon-search" src="/assets/icon-search.svg" 
+                                alt="icon search"></a>
                         <a onclick="myApp.EventHandlers.searchGifoSubmitClick()"><img id="btn-search-noc"
                                 class="icon-search-noc" src="/assets/icon-search-mod-noc.svg"
+                                alt="icon search dark mode"></a>
+                        <a onclick="myApp.EventHandlers.searchGifoCloseClick()"><img id="btn-close"
+                                class="icon-close" src="/assets/close.svg"
                                 alt="icon search dark mode"></a>
                     </form>
                 </div>
@@ -72,7 +76,8 @@
 
             <div class="sec-search__trending">
                 <h2>Trending:</h2>
-                <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3>
+                <!-- <h3>Reactions, Entertainment, Sports, Stickers, Artists</h3> -->
+                <div id="trenSearchTerms"></div>
             </div>
         </section>
 

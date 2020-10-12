@@ -48,8 +48,8 @@ body {
 
 	#menuHam_H01 {
 		display: none;
-	  }
-	  
+	}
+
 	.hamb_H01 {
 		display: none;
 	}
@@ -233,6 +233,7 @@ body {
 			border-radius: 1.69rem;
 			padding: 0.94rem;
 			background: $color_white;
+			z-index: 30;
 
 			display: flex;
 			align-items: center;
@@ -269,7 +270,7 @@ body {
 					line-height: 1.19rem;
 
 					text-align: left;
-					text-transform: capitalize;
+					//text-transform: capitalize;
 
 					body.dark & {
 						color: $color_white;
@@ -278,28 +279,36 @@ body {
 
 				.autocomplete-items {
 					position: relative;
-					border-top: 0.19rem solid $color_grey;
-					z-index: 99;
+					border-top: 0.1rem solid $color_grey;
+					z-index: 80;
 					padding-top: 0.5rem;
 					margin-top: 1rem;
 					@include Roboto_Gray;
-					text-transform: capitalize;
+					//text-transform: capitalize;
 					cursor: pointer;
+					left: -6%;
+					width: 110%;
+
+					img {
+						padding-right: 2%;
+					}
 
 					body.dark & {
 						color: $color_lightGrey;
 					}
+
+					div {
+						padding: 0.45rem 0;
+						//display: flex;
+					}
+
+					div:hover {
+						/*when hovering an item:*/
+						background-color: $color_lightGrey;
+						color: $color_black;
+					}
 				}
 
-				.autocomplete-items div {
-					padding: 0.45rem 0;
-				}
-
-				.autocomplete-items div:hover {
-					/*when hovering an item:*/
-					background-color: $color_lightGrey;
-					color: $color_black;
-				}
 				.autocomplete-active {
 					/*when navigating through the items using the arrow keys:*/
 					background-color: $color_lightGrey !important;
@@ -328,6 +337,14 @@ body {
 						visibility: visible;
 					}
 				}
+
+				a > .icon-close {
+					visibility: hidden;
+
+					body.dark & {
+						content: url('/assets/close-modo-noct.svg');
+					}
+				}
 			}
 		}
 	}
@@ -336,32 +353,50 @@ body {
 		position: absolute;
 		height: 3.56rem;
 		top: 32.06rem;
-		z-index: -10;
+		//z-index: -10;
 
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
 
-		h2,
-		h3 {
+		h2 {
 			margin: 0;
 
 			@include Montserrat_Violet;
 			line-height: 1.56rem;
 
 			text-align: center;
-		}
 
-		h2 {
 			font-size: 1.13rem;
 			font-weight: $font_weight_bold;
-		}
 
-		h3 {
-			font-size: 1rem;
-			font-weight: $font_weight_medium;
+			cursor: pointer;
 		}
+	}
+}
+
+#trenSearchTerms {
+	margin: 0;
+
+	@include Montserrat_Violet;
+	line-height: 1.56rem;
+
+	text-align: center;
+
+	text-transform: capitalize;
+	font-size: 1rem;
+	font-weight: $font_weight_medium;
+	//z-index: 1200;
+	
+	body.dark & {
+		color: $color_white;
+	}
+
+	a {
+		cursor: pointer;
+		//pointer-events: auto;
+		//z-index: 1200;
 	}
 }
 
@@ -911,7 +946,13 @@ body {
 		flex-direction: row;
 
 		body.dark & {
-			content: url('/assets/camara-modo-noc.svg');
+			#cam {
+				content: url('/assets/camara-modo-noc.svg');
+			}
+
+			#light {
+				content: url('/assets/element-luz-camara.svg');
+			}
 		}
 	}
 
@@ -1093,6 +1134,8 @@ body {
 				color: $color_white;
 				border-color: $color_white;
 			}
+
+			&
 		}
 
 		&__button:hover {

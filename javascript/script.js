@@ -41,9 +41,20 @@ if (darkModeInit == 'true') {
     document.body.classList.toggle("dark");
 }
 
+// TRENDING SUGGESTION
+async function trendigSearchTermsFetch() {
+    let url = `https://api.giphy.com/v1/trending/searches?api_key=${GIPHY_KEY}`;
+    let response = await fetch(url);
+    let trendingSearchTermsArr = await response.json();
+    return trendingSearchTermsArr.data;
+}
+
 // SEARCH FUNCTIONS
 async function gifoSearchFetch(keyword) {
-    let url = `http://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${GIPHY_KEY}&limit=${numGifSearch}`;
+
+    console.log(keyword);
+
+    let url = `https://api.giphy.com/v1/gifs/search?q=${keyword}&api_key=${GIPHY_KEY}&limit=${numGifSearch}`;
     let response = await fetch(url);
     let gifsSearchPromise = await response.json();
     return gifsSearchPromise.data;
@@ -77,7 +88,7 @@ function displaySearchGrid(gifsArray, init, finish) {
             gifoUser = gifsArray[i].username;
             gifoTitle = gifsArray[i].title;
             gifId = gifsArray[i].id;
-            
+
             if (favoritesIdArray.indexOf(gifId) != -1) {
                 classLike = 'icon-like__active';
             }
@@ -157,7 +168,7 @@ function searchNotFound(keyword) {
 
 // TRENDING FUNCTIONS
 async function gifoTrendingFetch() {
-    let url = `http://api.giphy.com/v1/gifs/trending?&api_key=${GIPHY_KEY}&limit=${numGifTrending}`;
+    let url = `https://api.giphy.com/v1/gifs/trending?&api_key=${GIPHY_KEY}&limit=${numGifTrending}`;
     let response = await fetch(url);
     let gifsTrendingPromise = await response.json();
     return gifsTrendingPromise.data;
@@ -216,8 +227,8 @@ function displayTrendingCards(init) {
 }
 
 async function gifoSuggest(keycode) {
-    let url = `http://api.giphy.com/v1/gifs/search/tags?&api_key=${GIPHY_KEY}&q=${keycode}&limit=${numGifSuggest}`;
-    //let url = `http://api.giphy.com/v1/tags/related/${keycode}?&api_key=${GIPHY_KEY}&limit=4`;
+    let url = `https://api.giphy.com/v1/gifs/search/tags?&api_key=${GIPHY_KEY}&q=${keycode}&limit=${numGifSuggest}`;
+    //let url = `https://api.giphy.com/v1/tags/related/${keycode}?&api_key=${GIPHY_KEY}&limit=4`;
     let response = await fetch(url);
     let suggestedWord = await response.json();
     return suggestedWord;
@@ -254,14 +265,24 @@ function autocomplete() { // From w3school example adapted to my web page
                 //this.parentNode.appendChild(a);
                 document.querySelector('#append-list').appendChild(a);
 
+                document.querySelector('#btn-close').style.visibility = 'visible';
+
+                document.querySelector('#btn-search').style.left = '-2rem';
+                document.querySelector('#btn-search').src = '/assets/icon-search-grey.png';
+
+                document.querySelector('#btn-search-noc').style.left = '-2rem';
+
                 /*for each item in the array...*/
                 for (i = 0; i < arr.length; i++) {
+
                     /*check if the item starts with the same letters as the text field value:*/
                     if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                         /*create a DIV element for each matching element:*/
                         b = document.createElement("DIV");
+                        b.innerHTML = `<img src='/assets/icon-search-grey.png'>`;
+
                         /*make the matching letters bold:*/
-                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                         b.innerHTML += arr[i].substr(val.length);
                         /*insert a input field that will hold the current array item's value:*/
                         b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
@@ -314,6 +335,7 @@ function autocomplete() { // From w3school example adapted to my web page
                     }
                 })
                 .catch(err => console.log(err));
+            closeAllLists();
         }
     });
     function addActive(x) {
@@ -335,6 +357,11 @@ function autocomplete() { // From w3school example adapted to my web page
     function closeAllLists(elmnt) {
         /*close all autocomplete lists in the document,
         except the one passed as an argument:*/
+        document.querySelector('#btn-search').style.left = '';
+        document.querySelector('#btn-search').src = '/assets/icon-search.svg';
+        document.querySelector('#btn-search-noc').style.left = '';
+        document.querySelector('#btn-close').style.visibility = 'hidden';
+
         var x = document.getElementsByClassName("autocomplete-items");
         for (var i = 0; i < x.length; i++) {
             if (elmnt != x[i] && elmnt != inp) {
@@ -787,8 +814,8 @@ myApp.EventHandlers = {
             `<div class="create-gif">
 
         <div class="create-gif__camara">
-            <img src="/assets/camara.svg" alt="camara de video">
-            <img src="/assets/element-luz-camara.svg" alt="">
+            <img id="cam" src="/assets/camara.svg" alt="camara de video">
+            <img id="light" src="/assets/element-luz-camara.svg" alt="">
         </div>
 
         <div id="create-gif-center" class="create-gif__center">
@@ -898,31 +925,69 @@ myApp.EventHandlers = {
                         document.querySelector('.textUpload').textContent = 'GIFO subido con éxito';
 
                         document.querySelector('#frameContainer').innerHTML +=
-                        `<div id="${myGifUrl}" class="icon-download2" onclick="myApp.EventHandlers.downloadGif(this.id)"></div>
-                        <div class="icon-link" ></div>`;
+                            `<div id="${myGifUrl}" class="icon-download2" onclick="myApp.EventHandlers.downloadGif(this.id)"></div>
+                        <div class="icon-link" onclick="myApp.EventHandlers.copyLink()"></div>`;
 
                     })
             });
     },
     addRemoveMyGifos: function (id) {
         console.log(id);
-        myGifArray =  JSON.parse(localStorage.getItem('myGif'));
+        myGifArray = JSON.parse(localStorage.getItem('myGif'));
         myGifArray.splice(id, 1); // Remove from array
         localStorage.setItem('myGif', JSON.stringify(myGifArray));
         this.goMyGifos();
     },
-    hamburguerMenu: function() {
+    hamburguerMenu: function () {
         hamMenuState = !hamMenuState;
-        
+
         //if(hamMenuState) {
-            document.querySelector('#header__nav').classList.toggle('hamburguer-menu');
+        document.querySelector('#header__nav').classList.toggle('hamburguer-menu');
         //}
+    },
+    copyLink: function () {
+        //console.log('Copy...');
+        //console.log(myGifUrl);
+        navigator.clipboard.writeText(myGifUrl);
+    },
+    showTrengingTerms: function(keyword) {
+        console.log(keyword.id);
+
+        let keyw = keyword.id;
+
+        gifoSearchFetch(keyw)
+        .then(gifsSearchPromise => {
+            if (gifsSearchPromise.length == 0) {
+                searchNotFound(keyword);
+            } else {
+                displaySearch(gifsSearchPromise, keyw);
+            }
+        })
+        .catch(err => console.log(err)); 
     }
 };
 
 myApp.EventHandlers.cleanSearch();
 
 autocomplete();
+
+trendigSearchTermsFetch()
+    .then(giftren => {
+        let trenTerms = document.querySelector('#trenSearchTerms');
+
+        for (let i = 0; i < 5; i++) {
+            a = document.createElement('a');
+            a.innerHTML += giftren[i];
+            if (i != 4) {
+                a.innerHTML += ', ';
+            }
+
+            a.setAttribute('id', giftren[i]);
+            a.setAttribute('onclick', 'myApp.EventHandlers.showTrengingTerms(this)');
+            trenTerms.appendChild(a);
+        }
+    })
+    .catch(err => console.log('Error gifs trending search terms: ' + err));
 
 gifoTrendingFetch()
     .then(gifsTrendingPromise => displayTrending(gifsTrendingPromise))

@@ -245,6 +245,7 @@ $mobile: 23.4375rem;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
+		z-index: 150;
 
 		body.dark & {
 			background-color: rgba(0, 0, 0, 0.952);
@@ -348,19 +349,19 @@ $mobile: 23.4375rem;
 			}
 	
 			.icon-like {
-				background: url(/src/assets/icon-fav.svg);
+				background: url(/assets/icon-fav.svg);
 				background-size: contain;
 				
 			}
 	
 			.icon-like:hover {
 				cursor: pointer;
-				background: url(/src/assets/icon-fav-hover.svg);
+				background: url(/assets/icon-fav-hover.svg);
 				background-size: contain;
 			}
 	
 			.icon-like__active {
-				background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav.svg);
+				background: url(/assets/icon-fav-active.svg), url(/assets/icon-fav.svg);
 				background-repeat: no-repeat, no-repeat;
 				background-position: center, center;
 				background-size: 1rem, auto;
@@ -368,42 +369,42 @@ $mobile: 23.4375rem;
 	
 			.icon-like__active:hover {
 				cursor: pointer;
-				background: url(/src/assets/icon-fav-active.svg), url(/src/assets/icon-fav-hover.svg);
+				background: url(/assets/icon-fav-active.svg), url(/assets/icon-fav-hover.svg);
 				background-repeat: no-repeat, no-repeat;
 				background-position: center, center;
 				background-size: 1rem, auto;
 			}
 	
 			.icon-download {
-				background: url(/src/assets/icon-download.svg);
+				background: url(/assets/icon-download.svg);
 				background-size: contain;
 			}
 	
 			.icon-download:hover {
 				cursor: pointer;
-				background: url(/src/assets/icon-download-hover.svg);
+				background: url(/assets/icon-download-hover.svg);
 				background-size: contain;
 			}
 	
 			.icon-max {
-				background: url(/src/assets/icon-max-normal.svg);
+				background: url(/assets/icon-max-normal.svg);
 				background-size: contain;
 			}
 	
 			.icon-max:hover {
 				cursor: pointer;
-				background: url(/src/assets/icon-max-hover.svg);
+				background: url(/assets/icon-max-hover.svg);
 				background-size: contain;
 			}
 	
 			.icon-delete {
-				background: url(/src/assets/icon-trash-normal.svg);
+				background: url(/assets/icon-trash-normal.svg);
 				background-size: contain;
 			}
 	
 			.icon-delete:hover {
 				cursor: pointer;
-				background: url(/src/assets/icon-trash-hover.svg);
+				background: url(/assets/icon-trash-hover.svg);
 				background-size: contain;
 			}
 		}
@@ -441,7 +442,7 @@ $mobile: 23.4375rem;
 				cursor: pointer;
 	
 				body.dark & {
-					content: url('/src/assets/close-modo-noct.svg');
+					content: url('/assets/close-modo-noct.svg');
 				}
 			}
 	

@@ -1,0 +1,21 @@
+3 - Autocompletar con sugerencias al empezar a tipear en el buscador.
+PARA CORREGIR: Se verifica parcialmente que se realiza el autocompletado:
+
+	- Al tipear entradas de búsqueda, desaparecen todas las lupas - Ver el diseño original https://snipboard.io/NL76fa.jpg
+
+	- En la "Consigna d) Continúa con la acción de buscar" dice Crea el request al endpoint cuando el usuario presione enter o haga click en la lupa., estaría pendiente realizar la búsqueda al presionar "enter".
+	< Cerrar cuadro de sugerencia >
+
+	- Al desplegarse el autocompletado, se omite agregar la cruz (al hacer click, se debe borrar la barra de búsqueda) - Ver https://snipboard.io/NL76fa.jpg (Original)
+
+4 - Sugerencias de trendings traídas desde la API y que accionen una búsqueda al hacer click.
+PARA CORREGIR: Se verifica parcialmente la implementación de las sugerencias de trendings:
+
+	- Al realizar un click sobre las sugerencias de trendings se debe realizar una búsqueda por dicho término - Ver https://snipboard.io/bGn7Jg.jpg.
+
+7 - POST a la API de Giphy para subir los GIFs capturados.
+PARA CORREGIR: Se verifica que se usa un POST a la API de Giphy para subir los vídeos capturados, aunque quedan algunos temas por corregir:
+
+	- La post captura no funciona del todo correctamente:
+
+	- El icono de copiar enlace (./assets/icon-link.svg) no funciona correctamente (No hace nada).
